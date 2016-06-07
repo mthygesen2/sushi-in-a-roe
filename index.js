@@ -17,14 +17,14 @@ var startGame = function(userStart) {
 }
 
 
-exports.playBoard = function playBoard() {
+var playBoard = function playBoard() {
   console.log(stringBoard.substring(0,5));
   console.log(stringBoard.substring(6,11));
   console.log(stringBoard.substring(12,17));
 }
 playBoard();
 
-module.exports = playBoard;
+module.exports.playBoard = playBoard;
 
 
 //

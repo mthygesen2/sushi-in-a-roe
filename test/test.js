@@ -10,9 +10,9 @@ describe('index', function() {
       expect(gameBoard).to.deep.equal([0,1,2,3,4,5,6,7,8]);
     });
   });
-  describe('playBoard', function() {
+  describe('index.playBoard', function() {
     it('will display gameboard as 3 by 3', function() {
-      expect(playBoard).to.equal("0,1,2", "3,4,5", "6,7,8");
+      expect(index.playBoard).to.equal("0,1,2", "3,4,5", "6,7,8");
     });
   });
 });
