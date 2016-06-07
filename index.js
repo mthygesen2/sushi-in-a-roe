@@ -17,7 +17,7 @@ var startGame = function(userStart) {
 }
 
 
-var playBoard = function playBoard() {
+exports.playBoard = function playBoard() {
   console.log(stringBoard.substring(0,5));
   console.log(stringBoard.substring(6,11));
   console.log(stringBoard.substring(12,17));
@@ -26,7 +26,7 @@ playBoard();
 
 module.exports = playBoard;
 
-// console.log(gameBoard);
+
 //
 // const readline = require('readline');
 // const rl = readline.createInterface({

@@ -1,0 +1,10 @@
+describe('startGame', function () {
+  it('is true when player types Y', function () {
+    expect(startGame(userStart)).to.equal(true);
+  });
+});
+
+describe('askQuestion', function() {
+  it('will ask what is your move', function() {
+    expect(askQuestion).to.equal("What is your move");
+  });
