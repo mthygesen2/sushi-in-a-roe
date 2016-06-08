@@ -40,17 +40,19 @@ function startGame(question){
       } else {
         console.log("Alright, see ya.");
       }
-    })
+    });
 };
+
 ///// Player X Turn for Play After it will go to O//////////
 function playerX(question){
   rl.question("What's your move Player X?", function(answer) {
     if(!validTurnX(gameBoard, answer)) {
+    isTaken(gameBoard, answer);
     gameBoard[answer] = "X";
     playBoard();
     playerO();
     }
-  })
+  });
 }
 
 ////////Player O Turn after will go to Player X /////////////
@@ -60,10 +62,11 @@ function playerO(question){
       gameBoard[answer] = "O";
       playBoard();
       playerX();
-    }
-  })
+      }
+  });
 }
 
+//////Validates turns to make sure it is numbers 0-8////////////
 function validTurnO(gameBoard, answer) {
   if(!gameBoard.hasOwnProperty(answer)) {
     console.log("Please put in a number 0-8");
@@ -76,6 +79,16 @@ function validTurnX(gameBoard, answer) {
       playerX();
   }
 }
+
+/////If a position is taken it will make you re try  //////
+function isTaken(gameBoard, answer) {
+  if(gameBoard[answer] === "X" || "O") {
+    console.log("Spot is taken, please choose another position");
+    playerX();
+  }
+}
+
+
 // function winX(gameBoard) {
 //   var win1 = gameBoard.indexOf(0) === "X" && gameBoard.indexOf(1) === "X" && gameBoard.indexOf(2)=== "X";
 //   // var win2 = gameBoard.indexOf(0) === "X" && gameBoard.indexOf(4) === "X" && gameBoard.indexOf(8)=== "X";

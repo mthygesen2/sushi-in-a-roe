@@ -5,27 +5,26 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-// playerTurn("What's your first move?");
-//
-// function playerTurn(question){
-//   rl.question(question, function(answer) {
-//
-//     gameBoard[answer] = "X";
-//     console.log(gameBoard);
-//   })
-// }
+playBoard();
+playerX();
 
-startGame("Do you want to play tic-tac-toe (Y/N)?");
+///// Player X Turn for Play After it will go to O//////////
+function playerX(question){
+  rl.question("What's your move Player X?", function(answer) {
+    if(isTaken(gameBoard, answer)) {
+    gameBoard[answer] = "X";
+    playBoard();
+    playerO();
+    }
+  });
+}
+function isTaken(gameBoard, answer) {
+  if(gameBoard.indexOf(answer) === "X" || "O") {
+    console.log("Spot is taken, please choose another position");
+    playerX();
+  }
+}
 
-function startGame(question){
-  rl.question(question, function(answer) {
-      if(answer.toUpperCase() === "Y") {
-        playBoard();
-      } else {
-        console.log("Alright, see ya.");
-      }
-    })
-};
 
 var gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 var stringBoard = gameBoard.toString();
