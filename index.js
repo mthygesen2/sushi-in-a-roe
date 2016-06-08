@@ -3,18 +3,21 @@
 exports = module.exports = {};
 
 var gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-var stringBoard = gameBoard.toString();
+var gameOver = false;
 
 
 function playBoard() {
   console.log(">TIC-TAC-TOE<");
   console.log(">> Type a number 0-8 <<");
-  console.log("   " + stringBoard.substring(0,5));
-  console.log("   " + stringBoard.substring(6,11));
-  console.log("   " + stringBoard.substring(12,17));
+  console.log("   " + gameBoard.slice(0,3));
+  console.log("   " + gameBoard.slice(3,6));
+  console.log("   " + gameBoard.slice(6,9));
 }
 
-var gameOver = function endGame() {
+var isGameDone = function endGame() {
+  if (gameOver === true) {
+    console.log("You have ended the game");
+  } else
   return false;
 }
 
@@ -32,11 +35,29 @@ function startGame(question){
   rl.question(question, function(answer) {
       if(answer.toUpperCase() === "Y") {
         playBoard();
+        playerX();
       } else {
         console.log("Alright, see ya.");
       }
     })
 };
 
+function playerX(question){
+  rl.question("What's your move Player X?", function(answer) {
+    gameBoard[answer] = "X";
+    playBoard();
+    playerO();
+  })
+}
+
+
+function playerO(question){
+  rl.question("What's your move Play O?", function(answer) {
+    gameBoard[answer] = "O";
+    playBoard();
+    playerX();
+  })
+}
+
 module.exports.gameBoard = gameBoard;
-module.exports.gameOver = gameOver;
+module.exports.isGameDone = isGameDone;
