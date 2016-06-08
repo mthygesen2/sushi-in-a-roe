@@ -1,68 +1,42 @@
 #!/usr/bin/env node
 
-//shows number 1-9 on CLI when prompted with node index.js
-// var row1 = ["1", "2", "3"];
-// var row2 = ["4", "5", "6"];
-// var row3 = ["7", "8", "9"];
-// var gameBoard = row1 + '\n' + row2 + '\n' +
-//   row3 + '\n';
 exports = module.exports = {};
-
 
 var gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 var stringBoard = gameBoard.toString();
-var userStart = "Y";
-var startGame = function(userStart) {
-  return true;
+
+
+function playBoard() {
+  console.log(">TIC-TAC-TOE<");
+  console.log(">> Type a number 0-8 <<");
+  console.log("   " + stringBoard.substring(0,5));
+  console.log("   " + stringBoard.substring(6,11));
+  console.log("   " + stringBoard.substring(12,17));
 }
 
-
-var playBoard = function playBoard() {
-  console.log(stringBoard.substring(0,5));
-  console.log(stringBoard.substring(6,11));
-  console.log(stringBoard.substring(12,17));
+var gameOver = function endGame() {
+  return false;
 }
-playBoard();
 
-module.exports.playBoard = playBoard;
+/////readline ////////
+const readline = require('readline');
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
+/// Start game with Question and answer or Y or N///////////
+startGame("Do you want to play tic-tac-toe (Y/N)?");
 
-//
-// const readline = require('readline');
-// const rl = readline.createInterface({
-//   input: process.stdin,
-//   output: process.stdout
-// });
-//
-// rl.question('What is your move? ', (answer) => {
-// // for each(var item in row1) {
-// //   if (answer === item) {
-// //     array.splice(answer, X);
-//     console.log(row1);
-//   // }
-// );
-//   rl.close();
-// });
+function startGame(question){
+  rl.question(question, function(answer) {
+      if(answer.toUpperCase() === "Y") {
+        playBoard();
+      } else {
+        console.log("Alright, see ya.");
+      }
+    })
+};
 
-// const readline = require('readline');
-//
-// const rl = readline.createInterface({
-//   input: process.stdin,
-//   output: process.stdout
-// });
-//
-// console.log("Let's play tic-tac-toe");
-//
-//
-// askQuestion("What is your move");
-//
-//
-// function askQuestion(question){
-//   rl.question(question, function(answer) {
-//     // row1.forEach(item in row1);
-//       if(answer === item) {
-//
-//         console.log(row1);
-//   }
-// })
-// };
+module.exports.gameBoard = gameBoard;
+module.exports.gameOver = gameOver;
