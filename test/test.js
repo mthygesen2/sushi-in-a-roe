@@ -13,4 +13,9 @@ describe('index', function() {
       expect(index.isGameDone()).to.equal(false);
     });
   });
+  describe('winX', function() {
+    it('playerX will win game', function() {
+      expect(index.winX(gameBoard)).to.equal(false);
+    });
+  });
 });
