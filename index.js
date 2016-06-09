@@ -87,7 +87,6 @@ function validTurn(gameBoard, answer) {
 
 /////check it the spot is already taken by a player////////
 
-
 function isTaken(gameBoard, answer) {
   var check = gameBoard[answer];
   if(check === "O" || check === "X"){
@@ -146,10 +145,29 @@ function noWinner(gameBoard) {
 
   if(tieGame === true) {
     console.log("The cat won this one. You both lost");
+    console.log(",_     _");
+    console.log(" |\\_,-~/");
+    console.log("/ _  _ |    ,--.");
+    console.log("(  @  @ )   / ,-'");
+    console.log(" \  _t_/-._( (");
+    console.log(" /         `. ");
+    console.log("|         _  \ |");
+    console.log
     return true;
   }
 }
 
+
+// ,_     _
+//  |\\_,-~/
+//  / _  _ |    ,--.
+// (  @  @ )   / ,-'
+//
+//
+//
+//  \ \ ,  /      |
+//   || |-_\__   /
+//  ((_/`(____,
 
 //////Start Rematch game  ////
 
