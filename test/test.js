@@ -2,6 +2,7 @@
 var expect = require('chai').expect;
 var index = require('../index.js');
 
+
 describe('index', function() {
   describe('index.gameBoard', function() {
     it('will display gameBoard as array', function() {
@@ -13,9 +14,9 @@ describe('index', function() {
       expect(index.isGameDone()).to.equal(false);
     });
   });
-  describe('winX', function() {
-    it('playerX will win game', function() {
-      expect(index.winX(gameBoard)).to.equal(false);
+  describe('isTakenO', function() {
+    it('will check if the spot is already taken on O turn', function() {
+      expect(index.isTakenO(gameBoard, 'X')).to.equal(false);
     });
   });
 });

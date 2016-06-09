@@ -47,10 +47,14 @@ function startGame(question){
 function playerX(question){
   rl.question("What's your move Player X?", function(answer) {
     if(!validTurnX(gameBoard, answer)) {
-    isTaken(gameBoard, answer);
-    gameBoard[answer] = "X";
-    playBoard();
-    playerO();
+      if(isTakenX(gameBoard, answer) === false) {
+        playerX();
+      } else {
+        gameBoard[answer] = "X";
+        winX(gameBoard);
+        playBoard();
+        playerO();
+      }
     }
   });
 }
@@ -59,10 +63,14 @@ function playerX(question){
 function playerO(question){
   rl.question("What's your move Play O?", function(answer) {
     if(!validTurnO(gameBoard, answer)) {
-      gameBoard[answer] = "O";
-      playBoard();
-      playerX();
+      if(isTakenO(gameBoard, answer) === false) {
+        playerO();
+      } else {
+        gameBoard[answer] = "O";
+        playBoard();
+        playerX();
       }
+    }
   });
 }
 
@@ -80,28 +88,48 @@ function validTurnX(gameBoard, answer) {
   }
 }
 
-/////If a position is taken it will make you re try  //////
-function isTaken(gameBoard, answer) {
-  if(gameBoard[answer] === "X" || "O") {
-    console.log("Spot is taken, please choose another position");
+/////check it the spot is already taken by a player////////
+
+function isTakenX(gameBoard, answer) {
+  var check = gameBoard[answer];
+  if(check === "X"){
+    console.log("You took this spot already. Please try again");
+    return false;
+  } else if(check === "O") {
+    console.log("This spot is already taken by O, try try try again");
     playerX();
+    return false;
   }
 }
 
+function isTakenO(gameBoard, answer) {
+  var check = gameBoard[answer];
+  if(check === "O"){
+    console.log("You took this spot already. Please try again");
+    return false;
+  } else if(check === "X") {
+    console.log("This spot is already taken by X, try try try again");
+    return false;
+  }
+}
 
-// function winX(gameBoard) {
-//   var win1 = gameBoard.indexOf(0) === "X" && gameBoard.indexOf(1) === "X" && gameBoard.indexOf(2)=== "X";
-//   // var win2 = gameBoard.indexOf(0) === "X" && gameBoard.indexOf(4) === "X" && gameBoard.indexOf(8)=== "X";
-//   // var win3 = gameBoard.indexOf(0) === "X" && gameBoard.indexOf(3) === "X" && gameBoard.indexOf(6)=== "X";
-//   // var win4 = gameBoard.indexOf(1) === "X" && gameBoard.indexOf(4) === "X" && gameBoard.indexOf(7)=== "X";
-//   // var win5 = gameBoard.indexOf(2) === "X" && gameBoard.indexOf(4) === "X" && gameBoard.indexOf(6)=== "X";
-//   // var win6 = gameBoard.indexOf(3) === "X" && gameBoard.indexOf(4) === "X" && gameBoard.indexOf(5)=== "X";
-//   // var win7 = gameBoard.indexOf(6) === "X" && gameBoard.indexOf(7) === "X" && gameBoard.indexOf(8)=== "X";
-//   // var win8 = gameBoard.indexOf(2) === "X" && gameBoard.indexOf(5) === "X" && gameBoard.indexOf(8)=== "X";
-//   if(gameBoard === win1) {
-//     return console.log("winner")
-//   }
-// }
+//////check to see if there is a winner after each turn
+
+function winX(gameBoard) {
+  var win1 = gameBoard.indexOf(0) === "X" && gameBoard.indexOf(1) === "X" && gameBoard.indexOf(2)=== "X";
+  // var win2 = gameBoard.indexOf(0) === "X" && gameBoard.indexOf(4) === "X" && gameBoard.indexOf(8)=== "X";
+  // var win3 = gameBoard.indexOf(0) === "X" && gameBoard.indexOf(3) === "X" && gameBoard.indexOf(6)=== "X";
+  // var win4 = gameBoard.indexOf(1) === "X" && gameBoard.indexOf(4) === "X" && gameBoard.indexOf(7)=== "X";
+  // var win5 = gameBoard.indexOf(2) === "X" && gameBoard.indexOf(4) === "X" && gameBoard.indexOf(6)=== "X";
+  // var win6 = gameBoard.indexOf(3) === "X" && gameBoard.indexOf(4) === "X" && gameBoard.indexOf(5)=== "X";
+  // var win7 = gameBoard.indexOf(6) === "X" && gameBoard.indexOf(7) === "X" && gameBoard.indexOf(8)=== "X";
+  // var win8 = gameBoard.indexOf(2) === "X" && gameBoard.indexOf(5) === "X" && gameBoard.indexOf(8)=== "X";
+  if(gameBoard === win1) {
+    console.log(gameBoard);
+    return console.log("winner")
+  }
+}
 module.exports.gameBoard = gameBoard;
 module.exports.isGameDone = isGameDone;
+module.exports.isTakenO = isTakenO;
 // module.exports.winX = winX;
