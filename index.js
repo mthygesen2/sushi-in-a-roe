@@ -3,8 +3,7 @@
 exports = module.exports = {};
 
 var gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-var gameOver = false;
-var playerWon = false;
+
 
 ////Displays Game Board /////
 function playBoard() {
@@ -15,12 +14,6 @@ function playBoard() {
   console.log("         " + gameBoard.slice(6,9));
 }
 
-var isGameDone = function endGame() {
-  if (gameOver === true) {
-    console.log("You have ended the game");
-  } else
-  return false;
-}
 
 /////readline ////////
 const readline = require('readline');
@@ -39,42 +32,49 @@ function startGame(question){
         playerX();
       } else {
         console.log("Alright, see ya.");
+        rl.close();
       }
     });
 };
 
 ///// Player X Turn for Play After it will go to O//////////
 function playerX(question){
-  rl.question("What's your move Player X?", function(answer) {
-    if(!validTurnX(gameBoard, answer)) {
-      if(isTaken(gameBoard, answer) === false) {
-        playerX();
-      } else {
-        gameBoard[answer] = "X";
-        winX(gameBoard);
-        winO(gameBoard);
-        playBoard();
-        playerO();
+  if(winX(gameBoard) === true || winO(gameBoard) === true || noWinner(gameBoard) === true) {
+    rl.close();
+    rematch();
+  } else {
+    rl.question("What's your move Player X?", function(answer) {
+      if(!validTurnX(gameBoard, answer)) {
+        if(isTaken(gameBoard, answer) === false) {
+          playerX();
+        } else {
+          gameBoard[answer] = "X";
+          playBoard();
+          playerO();
+        }
       }
-    }
-  });
+    });
+  }
 }
 
 ////////Player O Turn after will go to Player X /////////////
 function playerO(question){
-  rl.question("What's your move Play O?", function(answer) {
-    if(!validTurnO(gameBoard, answer)) {
-      if(isTaken(gameBoard, answer) === false) {
-        playerO();
-      } else if{
-        gameBoard[answer] = "O";
-        winX(gameBoard);
-        winO(gameBoard);
-        playBoard();
-        playerX();
+  if(winX(gameBoard) === true || winO(gameBoard) === true || noWinner(gameBoard) === true) {
+    rl.close();
+    rematch();
+  } else {
+    rl.question("What's your move Play O?", function(answer) {
+      if(!validTurnO(gameBoard, answer)) {
+        if(isTaken(gameBoard, answer) === false) {
+          playerO();ß
+        } else {
+          gameBoard[answer] = "O";
+          playBoard();
+          playerX();
+        }
       }
-    }
-  });
+    });
+  }
 }
 
 //////Validates turns to make sure it is numbers 0-8////////////
@@ -106,7 +106,8 @@ function isTaken(gameBoard, answer) {
 
 function winX(gameBoard) {
   var winnerX =
-    (gameBoard[0] === "X") && (gameBoard[1] === "X") && (gameBoard[2]=== "X")                 || (gameBoard[3] === "X") && (gameBoard[4] === "X") && (gameBoard[5] === "X")
+    (gameBoard[0] === "X") && (gameBoard[1] === "X") && (gameBoard[2]=== "X")
+    || (gameBoard[3] === "X") && (gameBoard[4] === "X") && (gameBoard[5] === "X")
     || (gameBoard[6] === "X") && (gameBoard[7] === "X") && (gameBoard[8] === "X")
     || (gameBoard[0] === "X") && (gameBoard[3] === "X") && (gameBoard[6] === "X")
     || (gameBoard[1] === "X") && (gameBoard[4] === "X") && (gameBoard[7] === "X")
@@ -115,8 +116,8 @@ function winX(gameBoard) {
     || (gameBoard[2] === "X") && (gameBoard[4] === "X") && (gameBoard[6] === "X");
 
   if(winnerX === true) {
-    return console.log("Winner Winner Chicken Dinner Player X");
-    rl.close();
+    console.log("Winner Winner Chicken Dinner Player X");
+    return true;
   }
 }
 
@@ -136,7 +137,44 @@ function winO(gameBoard) {
      return true;
   }
 }
+
+function noWinner(gameBoard) {
+  var tieGame =
+    ((gameBoard[0] === "O") || (gameBoard[0] ==="X")) &&
+    ((gameBoard[1] === "O") || (gameBoard[1] ==="X")) &&
+    ((gameBoard[2] === "O") || (gameBoard[2] ==="X")) &&
+    ((gameBoard[3] === "O") || (gameBoard[3] ==="X")) &&
+    ((gameBoard[4] === "O") || (gameBoard[4] ==="X")) &&
+    ((gameBoard[5] === "O") || (gameBoard[5] ==="X")) &&
+    ((gameBoard[6] === "O") || (gameBoard[6] ==="X")) &&
+    ((gameBoard[7] === "O") || (gameBoard[8] ==="X")) &&
+    ((gameBoard[8] === "O") || (gameBoard[8] ==="X"));
+
+  if(tieGame === true) {
+    console.log("The cat won this one. You both lost");
+    return true;
+  }
+}
+
+
+//////Start Rematch game  ////
+function rematch() {
+  rl.question("Start New Game (Y/N)?", function(answer) {
+    console.log(answer);
+    if(answer.toUpperCase() === "Y") {
+      console.log("this works");
+      playBoard();
+      playerX();
+    } else {
+      console.log("Alright, see ya");
+      rl.close();
+    }
+  });
+};
+
+
+
+
 module.exports.gameBoard = gameBoard;
-module.exports.isGameDone = isGameDone;
 module.exports.isTaken = isTaken;
 // module.exports.winX = winX;
