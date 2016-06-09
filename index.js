@@ -4,7 +4,6 @@ exports = module.exports = {};
 
 var gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
-
 ////Displays Game Board /////
 function playBoard() {
   console.log("--->>>TIC-TAC-TOE<<<---");
@@ -40,56 +39,51 @@ function startGame(question){
 ///// Player X Turn for Play After it will go to O//////////
 function playerX(question){
   if(winX(gameBoard) === true || winO(gameBoard) === true || noWinner(gameBoard) === true) {
-    rl.close();
     rematch();
   } else {
     rl.question("What's your move Player X?", function(answer) {
-      if(!validTurnX(gameBoard, answer)) {
-        if(isTaken(gameBoard, answer) === false) {
+      if(validTurn(gameBoard, answer) === false) {
+        playerX();
+      } else if(isTaken(gameBoard, answer) === false) {
           playerX();
         } else {
           gameBoard[answer] = "X";
           playBoard();
           playerO();
         }
-      }
-    });
+      });
+    }
   }
-}
+
 
 ////////Player O Turn after will go to Player X /////////////
 function playerO(question){
   if(winX(gameBoard) === true || winO(gameBoard) === true || noWinner(gameBoard) === true) {
-    rl.close();
     rematch();
   } else {
     rl.question("What's your move Play O?", function(answer) {
-      if(!validTurnO(gameBoard, answer)) {
-        if(isTaken(gameBoard, answer) === false) {
-          playerO();ß
+      if(validTurn(gameBoard, answer) === false) {
+        playerO();
+      } else if(isTaken(gameBoard, answer) === false) {
+          playerO();
         } else {
           gameBoard[answer] = "O";
           playBoard();
           playerX();
         }
-      }
     });
   }
 }
 
 //////Validates turns to make sure it is numbers 0-8////////////
-function validTurnO(gameBoard, answer) {
+
+function validTurn(gameBoard, answer) {
   if(!gameBoard.hasOwnProperty(answer)) {
     console.log("Please put in a number 0-8");
-      playerO();
+    return false;
   }
 }
-function validTurnX(gameBoard, answer) {
-  if(!gameBoard.hasOwnProperty(answer)) {
-    console.log("Please put in a number 0-8");
-      playerX();
-  }
-}
+
 
 /////check it the spot is already taken by a player////////
 
@@ -158,11 +152,11 @@ function noWinner(gameBoard) {
 
 
 //////Start Rematch game  ////
+
 function rematch() {
   rl.question("Start New Game (Y/N)?", function(answer) {
-    console.log(answer);
     if(answer.toUpperCase() === "Y") {
-      console.log("this works");
+      gameBoard = [0,1,2,3,4,5,6,7,8];
       playBoard();
       playerX();
     } else {
@@ -170,7 +164,7 @@ function rematch() {
       rl.close();
     }
   });
-};
+}
 
 
 
