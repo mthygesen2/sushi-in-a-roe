@@ -47,11 +47,12 @@ function startGame(question){
 function playerX(question){
   rl.question("What's your move Player X?", function(answer) {
     if(!validTurnX(gameBoard, answer)) {
-      if(isTakenX(gameBoard, answer) === false) {
+      if(isTaken(gameBoard, answer) === false) {
         playerX();
       } else {
         gameBoard[answer] = "X";
         winX(gameBoard);
+        winO(gameBoard);
         playBoard();
         playerO();
       }
@@ -63,10 +64,12 @@ function playerX(question){
 function playerO(question){
   rl.question("What's your move Play O?", function(answer) {
     if(!validTurnO(gameBoard, answer)) {
-      if(isTakenO(gameBoard, answer) === false) {
+      if(isTaken(gameBoard, answer) === false) {
         playerO();
-      } else {
+      } else if{
         gameBoard[answer] = "O";
+        winX(gameBoard);
+        winO(gameBoard);
         playBoard();
         playerX();
       }
@@ -90,25 +93,11 @@ function validTurnX(gameBoard, answer) {
 
 /////check it the spot is already taken by a player////////
 
-function isTakenX(gameBoard, answer) {
-  var check = gameBoard[answer];
-  if(check === "X"){
-    console.log("You took this spot already. Please try again");
-    return false;
-  } else if(check === "O") {
-    console.log("This spot is already taken by O, try try try again");
-    playerX();
-    return false;
-  }
-}
 
-function isTakenO(gameBoard, answer) {
+function isTaken(gameBoard, answer) {
   var check = gameBoard[answer];
-  if(check === "O"){
-    console.log("You took this spot already. Please try again");
-    return false;
-  } else if(check === "X") {
-    console.log("This spot is already taken by X, try try try again");
+  if(check === "O" || check === "X"){
+    console.log("This spot is already taken. Please try again");
     return false;
   }
 }
@@ -116,20 +105,38 @@ function isTakenO(gameBoard, answer) {
 //////check to see if there is a winner after each turn
 
 function winX(gameBoard) {
-  var win1 = gameBoard.indexOf(0) === "X" && gameBoard.indexOf(1) === "X" && gameBoard.indexOf(2)=== "X";
-  // var win2 = gameBoard.indexOf(0) === "X" && gameBoard.indexOf(4) === "X" && gameBoard.indexOf(8)=== "X";
-  // var win3 = gameBoard.indexOf(0) === "X" && gameBoard.indexOf(3) === "X" && gameBoard.indexOf(6)=== "X";
-  // var win4 = gameBoard.indexOf(1) === "X" && gameBoard.indexOf(4) === "X" && gameBoard.indexOf(7)=== "X";
-  // var win5 = gameBoard.indexOf(2) === "X" && gameBoard.indexOf(4) === "X" && gameBoard.indexOf(6)=== "X";
-  // var win6 = gameBoard.indexOf(3) === "X" && gameBoard.indexOf(4) === "X" && gameBoard.indexOf(5)=== "X";
-  // var win7 = gameBoard.indexOf(6) === "X" && gameBoard.indexOf(7) === "X" && gameBoard.indexOf(8)=== "X";
-  // var win8 = gameBoard.indexOf(2) === "X" && gameBoard.indexOf(5) === "X" && gameBoard.indexOf(8)=== "X";
-  if(gameBoard === win1) {
-    console.log(gameBoard);
-    return console.log("winner")
+  var winnerX =
+    (gameBoard[0] === "X") && (gameBoard[1] === "X") && (gameBoard[2]=== "X")                 || (gameBoard[3] === "X") && (gameBoard[4] === "X") && (gameBoard[5] === "X")
+    || (gameBoard[6] === "X") && (gameBoard[7] === "X") && (gameBoard[8] === "X")
+    || (gameBoard[0] === "X") && (gameBoard[3] === "X") && (gameBoard[6] === "X")
+    || (gameBoard[1] === "X") && (gameBoard[4] === "X") && (gameBoard[7] === "X")
+    || (gameBoard[2] === "X") && (gameBoard[5] === "X") && (gameBoard[8] === "X")
+    || (gameBoard[0] === "X") && (gameBoard[4] === "X") && (gameBoard[8] === "X")
+    || (gameBoard[2] === "X") && (gameBoard[4] === "X") && (gameBoard[6] === "X");
+
+  if(winnerX === true) {
+    return console.log("Winner Winner Chicken Dinner Player X");
+    rl.close();
+  }
+}
+
+function winO(gameBoard) {
+  var winnerO =
+    (gameBoard[0] === "O") && (gameBoard[1] === "O") && (gameBoard[2]=== "O")
+    || (gameBoard[3] === "O") && (gameBoard[4] === "O") && (gameBoard[5] === "O")
+    || (gameBoard[6] === "O") && (gameBoard[7] === "O") && (gameBoard[8] === "O")
+    || (gameBoard[0] === "O") && (gameBoard[3] === "O") && (gameBoard[6] === "O")
+    || (gameBoard[1] === "O") && (gameBoard[4] === "O") && (gameBoard[7] === "O")
+    || (gameBoard[2] === "O") && (gameBoard[5] === "O") && (gameBoard[8] === "O")
+    || (gameBoard[0] === "O") && (gameBoard[4] === "O") && (gameBoard[8] === "O")
+    || (gameBoard[2] === "O") && (gameBoard[4] === "O") && (gameBoard[6] === "O");
+
+  if(winnerO === true) {
+     console.log("Winner Winner Chicken Dinner Player O");
+     return true;
   }
 }
 module.exports.gameBoard = gameBoard;
 module.exports.isGameDone = isGameDone;
-module.exports.isTakenO = isTakenO;
+module.exports.isTaken = isTaken;
 // module.exports.winX = winX;
