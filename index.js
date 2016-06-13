@@ -250,16 +250,15 @@ function rematch() {
       playBoard();
       var gameArray = playerXWins.concat(playerOWins, catWins);
       var numberOfGames = gameArray.length;
-      console.log(numberOfGames);
       if(numberOfGames%2 === 0) {
         playerX();
       } else if (numberOfGames%2 != 0) {
         playerO();
-    } else {
+      } else {
       console.log("    Good game, see ya");
       rl.close();
+      }
     }
-  }
   });
 }
 
