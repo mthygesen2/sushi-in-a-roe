@@ -141,34 +141,34 @@ function winO(gameBoard) {
 
 function noWinner(gameBoard) {
   var tieGame =
-    ((gameBoard[0] === "O") || (gameBoard[0] ==="X")) &&
-    ((gameBoard[1] === "O") || (gameBoard[1] ==="X")) &&
-    ((gameBoard[2] === "O") || (gameBoard[2] ==="X")) &&
-    ((gameBoard[3] === "O") || (gameBoard[3] ==="X")) &&
-    ((gameBoard[4] === "O") || (gameBoard[4] ==="X")) &&
-    ((gameBoard[5] === "O") || (gameBoard[5] ==="X")) &&
-    ((gameBoard[6] === "O") || (gameBoard[6] ==="X")) &&
-    ((gameBoard[7] === "O") || (gameBoard[8] ==="X")) &&
-    ((gameBoard[8] === "O") || (gameBoard[8] ==="X"));
+    ((gameBoard[0] === "O") || (gameBoard[0] === "X")) &&
+    ((gameBoard[1] === "O") || (gameBoard[1] === "X")) &&
+    ((gameBoard[2] === "O") || (gameBoard[2] === "X")) &&
+    ((gameBoard[3] === "O") || (gameBoard[3] === "X")) &&
+    ((gameBoard[4] === "O") || (gameBoard[4] === "X")) &&
+    ((gameBoard[5] === "O") || (gameBoard[5] === "X")) &&
+    ((gameBoard[6] === "O") || (gameBoard[6] === "X")) &&
+    ((gameBoard[7] === "O") || (gameBoard[7] === "X")) &&
+    ((gameBoard[8] === "O") || (gameBoard[8] === "X"));
 
   if(tieGame === true) {
     console.log("The cat won this one. You both lost");
+    console.log(",_     _");
+    console.log(" |\\_,-~/");
+    console.log("/ _  _ |    ,--.");
+    console.log("(  @  @ )   / ,-'");
+    console.log(" \  _t_/-._( (");
+    console.log(" /         `. ");
+    console.log("|         _  \ |");
+    console.log("\ \ ,  /      |");
+    console.log("|| |-_\__   /");
+    console.log("((_/`(____,");
     return true;
   } else {
     return false;
   }
 }
 
-// console.log(",_     _");
-// console.log(" |\\_,-~/");
-// console.log("/ _  _ |    ,--.");
-// console.log("(  @  @ )   / ,-'");
-// console.log(" \  _t_/-._( (");
-// console.log(" /         `. ");
-// console.log("|         _  \ |");
-// console.log("\ \ ,  /      |");
-// console.log("|| |-_\__   /");
-// console.log("((_/`(____,");
 
 //////Start Rematch game  ////
 
