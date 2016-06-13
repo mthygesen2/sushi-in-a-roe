@@ -81,6 +81,8 @@ function validTurn(gameBoard, answer) {
   if(!gameBoard.hasOwnProperty(answer)) {
     console.log("Please put in a number 0-8");
     return false;
+  } else {
+    return true;
   }
 }
 
@@ -92,6 +94,8 @@ function isTaken(gameBoard, answer) {
   if(check === "O" || check === "X"){
     console.log("This spot is already taken. Please try again");
     return false;
+  } else {
+    return true;
   }
 }
 
@@ -111,6 +115,8 @@ function winX(gameBoard) {
   if(winnerX === true) {
     console.log("Winner Winner Chicken Dinner Player X");
     return true;
+  } else {
+    return false;
   }
 }
 
@@ -128,6 +134,8 @@ function winO(gameBoard) {
   if(winnerO === true) {
      console.log("Winner Winner Chicken Dinner Player O");
      return true;
+  } else {
+    return false;
   }
 }
 
@@ -145,29 +153,22 @@ function noWinner(gameBoard) {
 
   if(tieGame === true) {
     console.log("The cat won this one. You both lost");
-    console.log(",_     _");
-    console.log(" |\\_,-~/");
-    console.log("/ _  _ |    ,--.");
-    console.log("(  @  @ )   / ,-'");
-    console.log(" \  _t_/-._( (");
-    console.log(" /         `. ");
-    console.log("|         _  \ |");
-    console.log
     return true;
+  } else {
+    return false;
   }
 }
 
-
-// ,_     _
-//  |\\_,-~/
-//  / _  _ |    ,--.
-// (  @  @ )   / ,-'
-//
-//
-//
-//  \ \ ,  /      |
-//   || |-_\__   /
-//  ((_/`(____,
+// console.log(",_     _");
+// console.log(" |\\_,-~/");
+// console.log("/ _  _ |    ,--.");
+// console.log("(  @  @ )   / ,-'");
+// console.log(" \  _t_/-._( (");
+// console.log(" /         `. ");
+// console.log("|         _  \ |");
+// console.log("\ \ ,  /      |");
+// console.log("|| |-_\__   /");
+// console.log("((_/`(____,");
 
 //////Start Rematch game  ////
 
@@ -185,8 +186,11 @@ function rematch() {
 }
 
 
-
-
+////EXPORTS FOR TESTING///////////
+module.exports.noWinner = noWinner;
+module.exports.winO = winO;
+module.exports.winX = winX;
+module.exports.validTurn = validTurn;
+module.exports.noWinner = noWinner;
 module.exports.gameBoard = gameBoard;
 module.exports.isTaken = isTaken;
-// module.exports.winX = winX;
