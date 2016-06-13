@@ -31,6 +31,7 @@ startGame("Do you want to play tic-tac-toe (Y/N)?");
 function startGame(question){
   rl.question(question, function(answer) {
       if(answer.toUpperCase() === "Y") {
+        console.log("Type 'quit' anytime to exit out of the game.")
         playBoard();
         playerX();
       } else {
@@ -46,7 +47,10 @@ function playerX(question){
     rematch();
   } else {
     rl.question("What's your move Player X?", function(answer) {
-      if(validTurn(gameBoard, answer) === false) {
+      if(answer.toUpperCase() === "QUIT") {
+        console.log("Buh-Bye");
+        rl.close();
+      } else if(validTurn(gameBoard, answer) === false) {
         playerX();
       } else if(isTaken(gameBoard, answer) === false) {
           playerX();
@@ -66,7 +70,10 @@ function playerO(question){
     rematch();
   } else {
     rl.question("What's your move Play O?", function(answer) {
-      if(validTurn(gameBoard, answer) === false) {
+      if(answer.toUpperCase() === "QUIT") {
+        console.log("Buh-Bye");
+        rl.close();
+      } else if(validTurn(gameBoard, answer) === false) {
         playerO();
       } else if(isTaken(gameBoard, answer) === false) {
           playerO();
@@ -142,6 +149,7 @@ function winO(gameBoard) {
   if(winnerO === true) {
      console.log("Winner Winner Chicken Dinner Player O");
      playerOWins.push(1);
+     console.log("The Score");
      console.log("Player O has won: " + playerOWins.length);
      console.log("Player X has won: " + playerXWins.length);
        return true;
@@ -178,7 +186,6 @@ function noWinner(gameBoard) {
 }
 
 
-
 //////Start Rematch game  ////
 
 function rematch() {
@@ -194,6 +201,13 @@ function rematch() {
   });
 }
 
+
+//////Quitting the game /////
+function quit() {
+  if(answer.toUpperCase() === "QUIT") {
+    rl.close();
+  }
+}
 
 ////EXPORTS FOR TESTING///////////
 module.exports.noWinner = noWinner;
