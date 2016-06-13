@@ -3,14 +3,18 @@
 exports = module.exports = {};
 
 var gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+var playerOWins = [];
+var playerXWins = [];
 
 ////Displays Game Board /////
 function playBoard() {
-  console.log("--->>>TIC-TAC-TOE<<<---");
-  console.log(">> Type a number 0-8 <<");
-  console.log("         " + gameBoard.slice(0,3));
-  console.log("         " + gameBoard.slice(3,6));
-  console.log("         " + gameBoard.slice(6,9));
+  console.log("   --->>>TIC-TAC-TOE<<<---");
+  console.log("   >> Type a number 0-8 <<");
+  console.log("          " + "+-------+");
+  console.log("          | " + gameBoard.slice(0,3) + " |");
+  console.log("          | " + gameBoard.slice(3,6) + " |");
+  console.log("          | " + gameBoard.slice(6,9) + " |");
+  console.log("          " + "+-------+");
 }
 
 
@@ -114,6 +118,10 @@ function winX(gameBoard) {
 
   if(winnerX === true) {
     console.log("Winner Winner Chicken Dinner Player X");
+    playerXWins.push(1);
+    console.log("The Score");
+    console.log("Player O: " + playerOWins.length);
+    console.log("Player X: " + playerXWins.length);
     return true;
   } else {
     return false;
@@ -133,7 +141,10 @@ function winO(gameBoard) {
 
   if(winnerO === true) {
      console.log("Winner Winner Chicken Dinner Player O");
-     return true;
+     playerOWins.push(1);
+     console.log("Player O has won: " + playerOWins.length);
+     console.log("Player X has won: " + playerXWins.length);
+       return true;
   } else {
     return false;
   }
@@ -153,21 +164,19 @@ function noWinner(gameBoard) {
 
   if(tieGame === true) {
     console.log("The cat won this one. You both lost");
-    console.log(",_     _");
-    console.log(" |\\_,-~/");
-    console.log("/ _  _ |    ,--.");
-    console.log("(  @  @ )   / ,-'");
-    console.log(" \  _t_/-._( (");
-    console.log(" /         `. ");
-    console.log("|         _  \ |");
-    console.log("\ \ ,  /      |");
-    console.log("|| |-_\__   /");
-    console.log("((_/`(____,");
+
+    console.log("  /|____/|  ");
+    console.log(" ( o   o )");
+    console.log(" (  =^=  ) ");
+    console.log("(         )");
+    console.log("(          )");
+    console.log("(          )))))))))))");
     return true;
   } else {
     return false;
   }
 }
+
 
 
 //////Start Rematch game  ////
