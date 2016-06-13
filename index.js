@@ -5,16 +5,19 @@ exports = module.exports = {};
 var gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 var playerOWins = [];
 var playerXWins = [];
+var catWins= [];
 
 ////Displays Game Board /////
 function playBoard() {
-  console.log("   --->>>TIC-TAC-TOE<<<---");
-  console.log("   >> Type a number 0-8 <<");
-  console.log("          " + "+-------+");
-  console.log("          | " + gameBoard.slice(0,3) + " |");
-  console.log("          | " + gameBoard.slice(3,6) + " |");
-  console.log("          | " + gameBoard.slice(6,9) + " |");
-  console.log("          " + "+-------+");
+  console.log("     --->>>TIC-TAC-TOE<<<---");
+  console.log("     >> Type a number 0-8 <<");
+  console.log("          " + "+-----------+");
+  console.log("          | " + gameBoard.slice(0,1) + " | " + gameBoard.slice(1,2) + " | " +            gameBoard.slice(2,3) +" |");
+  console.log("          | "+ "---------" +" |");
+  console.log("          | " + gameBoard.slice(3,4) + " | " + gameBoard.slice(4,5)+ " | " + gameBoard.slice(5,6)+ " |");
+  console.log("          | " + "---------" +" |");
+  console.log("          | " + gameBoard.slice(6,7) + " | " + gameBoard.slice(7,8)+ " | " + gameBoard.slice(8,9)+ " |");
+  console.log("          " + "+-----------+");
 }
 
 
@@ -31,7 +34,7 @@ startGame("Do you want to play tic-tac-toe (Y/N)?");
 function startGame(question){
   rl.question(question, function(answer) {
       if(answer.toUpperCase() === "Y") {
-        console.log("Type 'quit' anytime to exit out of the game.")
+        console.log("*** Type 'quit' anytime to exit out of the game ***")
         playBoard();
         playerX();
       } else {
@@ -47,8 +50,21 @@ function playerX(question){
     rematch();
   } else {
     rl.question("What's your move Player X?", function(answer) {
-      if(answer.toUpperCase() === "QUIT") {
-        console.log("Buh-Bye");
+      if(quit(gameBoard, answer) === true) {
+        console.log("     Buh-Bye");
+        console.log("    .--.    .--.");
+        console.log("    |  |   /  /");
+        console.log("    |  |  /  /");
+        console.log("    |  | /  /");
+        console.log("    |  |/  ;-._");
+        console.log("    |  ` _/  / `");
+        console.log("    |  /` ) /  /");
+        console.log("    | /  /_/`_/:");
+        console.log("    |/  /      |");
+        console.log("    (  ' ; '-  |");
+        console.log("    `    `.  /");
+        console.log("     |      |");
+        console.log("     |      | ");
         rl.close();
       } else if(validTurn(gameBoard, answer) === false) {
         playerX();
@@ -70,8 +86,21 @@ function playerO(question){
     rematch();
   } else {
     rl.question("What's your move Play O?", function(answer) {
-      if(answer.toUpperCase() === "QUIT") {
-        console.log("Buh-Bye");
+        if(quit(gameBoard, answer) === true) {
+        console.log("    Buh-Bye");
+        console.log("    .--.    .--.");
+        console.log("    |  |   /  /");
+        console.log("    |  |  /  /");
+        console.log("    |  | /  /");
+        console.log("    |  |/  ;-._");
+        console.log("    |  ` _/  / `");
+        console.log("    |  /` ) /  /");
+        console.log("    | /  /_/`_/:");
+        console.log("    |/  /      |");
+        console.log("    (  ' ; '-  |");
+        console.log("    `    `.  /");
+        console.log("     |      |");
+        console.log("     |      | ");
         rl.close();
       } else if(validTurn(gameBoard, answer) === false) {
         playerO();
@@ -97,7 +126,6 @@ function validTurn(gameBoard, answer) {
   }
 }
 
-
 /////check it the spot is already taken by a player////////
 
 function isTaken(gameBoard, answer) {
@@ -107,6 +135,17 @@ function isTaken(gameBoard, answer) {
     return false;
   } else {
     return true;
+  }
+}
+
+////////Quit during any time of the game /////
+
+function quit(gameBoard, answer) {
+  var quitAnswer = answer.toUpperCase();
+  if(quitAnswer === "QUIT") {
+    return true;
+  } else {
+    return false;
   }
 }
 
@@ -124,11 +163,17 @@ function winX(gameBoard) {
     || (gameBoard[2] === "X") && (gameBoard[4] === "X") && (gameBoard[6] === "X");
 
   if(winnerX === true) {
-    console.log("Winner Winner Chicken Dinner Player X");
     playerXWins.push(1);
-    console.log("The Score");
-    console.log("Player O: " + playerOWins.length);
-    console.log("Player X: " + playerXWins.length);
+    console.log("▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫");
+    console.log("▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫");
+    console.log("▫▪▪▫▫▪▪▫▫▪▪▫        WINNER        ▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫");
+    console.log("▫▪▪▫▫▪▪▫▫▪▪▫       Player X       ▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫");
+    console.log("▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫");
+    console.log("▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫");
+    console.log("         The Score");
+    console.log("         Player O: " + playerOWins.length);
+    console.log("         Player X: " + playerXWins.length);
+    console.log("         The Cat: " + catWins.length);
     return true;
   } else {
     return false;
@@ -147,16 +192,25 @@ function winO(gameBoard) {
     || (gameBoard[2] === "O") && (gameBoard[4] === "O") && (gameBoard[6] === "O");
 
   if(winnerO === true) {
-     console.log("Winner Winner Chicken Dinner Player O");
-     playerOWins.push(1);
-     console.log("The Score");
-     console.log("Player O has won: " + playerOWins.length);
-     console.log("Player X has won: " + playerXWins.length);
-       return true;
+    playerOWins.push(1);
+    console.log(" ¸ • * ¸ • *  • ¸ * • ¸ • * ¸ • * ¸ • * • ¸ * • ¸ ");
+    console.log(" ¸ • * ¸ • *  • ¸ * • ¸ • * ¸ • * ¸ • * • ¸ * • ¸ ");
+    console.log(" ¸ • * ¸ • *          WINNER          * • ¸ * • ¸ ");
+    console.log(" ¸ • * ¸ • *         Player O         * • ¸ * • ¸ ");
+    console.log(" ¸ • * ¸ • *  • ¸ * • ¸ • * ¸ • * ¸ • * • ¸ * • ¸ ");
+    console.log(" ¸ • * ¸ • *  • ¸ * • ¸ • * ¸ • * ¸ • * • ¸ * • ¸ ");
+    console.log("        The Score");
+    console.log("        Player O: " + playerOWins.length);
+    console.log("        Player X: " + playerXWins.length);
+    console.log("        The Cat: " + catWins.length);
+     return true;
   } else {
     return false;
   }
 }
+
+
+
 
 function noWinner(gameBoard) {
   var tieGame =
@@ -171,14 +225,15 @@ function noWinner(gameBoard) {
     ((gameBoard[8] === "O") || (gameBoard[8] === "X"));
 
   if(tieGame === true) {
-    console.log("The cat won this one. You both lost");
-
-    console.log("  /|____/|  ");
-    console.log(" ( o   o )");
-    console.log(" (  =^=  ) ");
-    console.log("(         )");
-    console.log("(          )");
-    console.log("(          )))))))))))");
+    catWins.push(1);
+    console.log("=^..^=   =^..^=    =^..^=    =^..^=    =^..^= ");
+    console.log("=^..^=     The cat won this one.       =^..^= ");
+    console.log("=^..^=       You both lost.            =^..^= ");
+    console.log("=^..^=   =^..^=    =^..^=     =^..^=   =^..^= ");
+    console.log("        The Score");
+    console.log("        Player O: " + playerOWins.length);
+    console.log("        Player X: " + playerXWins.length);
+    console.log("        The Cat: " + catWins.length);
     return true;
   } else {
     return false;
@@ -193,23 +248,27 @@ function rematch() {
     if(answer.toUpperCase() === "Y") {
       gameBoard = [0,1,2,3,4,5,6,7,8];
       playBoard();
-      playerX();
+      var gameArray = playerXWins.concat(playerOWins, catWins);
+      var numberOfGames = gameArray.length;
+      console.log(numberOfGames);
+      if(numberOfGames%2 === 0) {
+        playerX();
+      } else if (numberOfGames%2 != 0) {
+        playerO();
     } else {
-      console.log("Alright, see ya");
+      console.log("    Good game, see ya");
       rl.close();
     }
+  }
   });
 }
 
 
-//////Quitting the game /////
-function quit() {
-  if(answer.toUpperCase() === "QUIT") {
-    rl.close();
-  }
-}
+
 
 ////EXPORTS FOR TESTING///////////
+
+module.exports.quit = quit;
 module.exports.noWinner = noWinner;
 module.exports.winO = winO;
 module.exports.winX = winX;

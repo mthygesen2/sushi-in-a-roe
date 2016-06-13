@@ -57,4 +57,12 @@ describe('index', function() {
       expect(index.noWinner(gameBoard)).to.equal(true);
     });
   });
+  describe('quit', function() {
+    it('will take answer input and quit game', function() {
+    expect(index.quit(gameBoard, "quit")).to.equal(true);
+    });
+    it('will take answer input and continue game', function() {
+    expect(index.quit(gameBoard, "s")).to.equal(false);
+    });
+  });
 });
