@@ -1,6 +1,7 @@
 
 var expect = require('chai').expect;
 var index = require('../index.js');
+var GameState = index.GameState;
 var gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
 describe('index', function() {
@@ -11,20 +12,24 @@ describe('index', function() {
   });
   describe('validTurn', function() {
     it('the input will be incorrect', function(){
-      expect(index.validTurn(gameBoard, 9)).to.equal(false);
+      var gs = new GameState();
+      expect(gs.validTurn(9)).to.equal(false);
     });
     it('will be a correct input', function() {
-      expect(index.validTurn(gameBoard, 2)).to.equal(true);
+      var gs = new GameState();
+      expect(gs.validTurn(2)).to.equal(true);
     });
   });
   describe('isTaken', function() {
     it('input will be free to be taken by  player', function() {
-      expect(index.isTaken(gameBoard, 1)).to.equal(true);
+      var gs = new GameState();
+      expect(gs.isTaken(1)).to.equal(false);
     });
 
     it('input will taken already', function() {
-      var gameBoard = [0, 1, "X", 3, 4, 5, 6, 7, 8];
-      expect(index.isTaken(gameBoard, 2)).to.equal(false);
+      var gs = new GameState();
+      gs.gameBoard[2] = "X";
+      expect(gs.isTaken(2)).to.equal(true);
     });
   });
   describe('winX', function() {

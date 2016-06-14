@@ -1,12 +1,35 @@
 #!/usr/bin/env node
 
-exports = module.exports = {};
-
 var gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 var playerOWins = [];
 var playerXWins = [];
 var catWins= [];
+var myGameState = new GameState();
+///constructor function of GameState////eventually put in wins
+function GameState() {
+  this.gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+  this.currentPlayer = "X";
+}
+//////Validates turns to make sure it is numbers 0-8////////////
 
+GameState.prototype.validTurn = function(answer) {
+  if(!this.gameBoard.hasOwnProperty(answer)) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+/////check it the spot is already taken by a player////////
+
+GameState.prototype.isTaken = function(answer) {
+  var check = this.gameBoard[answer];
+  if(check === "O" || check === "X") {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 ////Displays Game Board /////
 function playBoard() {
@@ -100,10 +123,10 @@ function playerX(){
         console.log("     |      |");
         console.log("     |      | ");
         rl.close();
-      } else if(validTurn(gameBoard, answer) === false) {
+      } else if(myGameState.validTurn(answer) === false) {
         console.log("Please put in a number 0-8");
         playerX();
-      } else if(isTaken(gameBoard, answer) === false) {
+      } else if(myGameState.isTaken(answer) === true) {
           console.log("This spot is already taken. Please try again");
           playerX();
         } else {
@@ -170,10 +193,10 @@ function playerO(question){
         console.log("     |      |");
         console.log("     |      | ");
         rl.close();
-      } else if(validTurn(gameBoard, answer) === false) {
+      } else if(myGameState.validTurn(answer) === false) {
         console.log("Please put in a number 0-8");
         playerO();
-      } else if(isTaken(gameBoard, answer) === false) {
+      } else if(myGameState.isTaken(answer) === false) {
           console.log("This spot is already taken. Please try again");
           playerO();
         } else {
@@ -185,26 +208,7 @@ function playerO(question){
   }
 }
 
-//////Validates turns to make sure it is numbers 0-8////////////
 
-function validTurn(gameBoard, answer) {
-  if(!gameBoard.hasOwnProperty(answer)) {
-    return false;
-  } else {
-    return true;
-  }
-}
-
-/////check it the spot is already taken by a player////////
-
-function isTaken(gameBoard, answer) {
-  var check = gameBoard[answer];
-  if(check === "O" || check === "X") {
-    return false;
-  } else {
-    return true;
-  }
-}
 
 ////////Quit during any time of the game /////
 
@@ -308,12 +312,11 @@ function rematch() {
 
 
 ////EXPORTS FOR TESTING///////////
-
+module.exports.GameState = GameState;
 module.exports.quit = quit;
 module.exports.noWinner = noWinner;
 module.exports.winO = winO;
 module.exports.winX = winX;
-module.exports.validTurn = validTurn;
+
 module.exports.noWinner = noWinner;
 module.exports.gameBoard = gameBoard;
-module.exports.isTaken = isTaken;
