@@ -151,7 +151,7 @@ function quit(gameBoard, answer) {
   }
 }
 
-//////check to see if there is a winner after each turn
+//////check to see if there is a winner after each turn for each type of end game
 
 function winX(gameBoard) {
   var winnerX =
@@ -172,10 +172,10 @@ function winX(gameBoard) {
     console.log("▫▪▪▫▫▪▪▫▫▪▪▫       Player X       ▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫");
     console.log("▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫");
     console.log("▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫");
-    console.log("           The Score");
-    console.log("           Player O: " + playerOWins.length);
-    console.log("           Player X: " + playerXWins.length);
-    console.log("           The Cat: " + catWins.length);
+    console.log("                  The Score");
+    console.log("                  Player O: " + playerOWins.length);
+    console.log("                  Player X: " + playerXWins.length);
+    console.log("                  The Cat: " + catWins.length);
     return true;
   } else {
     return false;
@@ -201,17 +201,15 @@ function winO(gameBoard) {
     console.log(" ¸ • * ¸ • *         Player O         * • ¸ * • ¸ ");
     console.log(" ¸ • * ¸ • *  • ¸ * • ¸ • * ¸ • * ¸ • * • ¸ * • ¸ ");
     console.log(" ¸ • * ¸ • *  • ¸ * • ¸ • * ¸ • * ¸ • * • ¸ * • ¸ ");
-    console.log("          The Score");
-    console.log("          Player O: " + playerOWins.length);
-    console.log("          Player X: " + playerXWins.length);
-    console.log("          The Cat: " + catWins.length);
+    console.log("                   The Score");
+    console.log("                   Player O: " + playerOWins.length);
+    console.log("                   Player X: " + playerXWins.length);
+    console.log("                   The Cat: " + catWins.length);
     return true;
   } else {
     return false;
   }
 }
-
-
 
 
 function noWinner(gameBoard) {
@@ -232,10 +230,10 @@ function noWinner(gameBoard) {
     console.log("=^..^=     The cat won this one.       =^..^= ");
     console.log("=^..^=       You both lost.            =^..^= ");
     console.log("=^..^=   =^..^=    =^..^=     =^..^=   =^..^= ");
-    console.log("          The Score");
-    console.log("          Player O: " + playerOWins.length);
-    console.log("          Player X: " + playerXWins.length);
-    console.log("          The Cat: " + catWins.length);
+    console.log("            The Score");
+    console.log("            Player O: " + playerOWins.length);
+    console.log("            Player X: " + playerXWins.length);
+    console.log("            The Cat: " + catWins.length);
     return true;
   } else {
     return false;
@@ -247,25 +245,22 @@ function noWinner(gameBoard) {
 
 function rematch() {
   rl.question("Feeling like a rematch (Y/N)?", function(answer) {
-    // if(answer.toUpperCase() != "Y" || answer.toUpperCase() != "N") {
-    //   console.log("Please input (Y/N)");
-    //   rematch();
-      if(answer.toUpperCase() === "N") {
-        console.log("    Good game, see ya");
-        rl.close();
-      } else if(answer.toUpperCase() === "Y") {
-        gameBoard = [0,1,2,3,4,5,6,7,8];
-        playBoard();
-        var gameArray = playerXWins.concat(playerOWins, catWins);
-        var numberOfGames = gameArray.length;
-        if(numberOfGames%2 === 0) {
-          playerX();
-        } else if (numberOfGames%2 != 0) {
-          playerO();
-        }
-      } else if(answer.toUpperCase() != "Y" || answer.toUpperCase() != "N") {
-        console.log("Please input (Y/N)");
-        rematch();
+    if(answer.toUpperCase() === "N") {
+      console.log("    Good game, see ya");
+      rl.close();
+    } else if(answer.toUpperCase() === "Y") {
+      gameBoard = [0,1,2,3,4,5,6,7,8];
+      playBoard();
+      var gameArray = playerXWins.concat(playerOWins, catWins);
+      var numberOfGames = gameArray.length;
+      if(numberOfGames%2 === 0) {
+        playerX();
+      } else if (numberOfGames%2 != 0) {
+        playerO();
+      }
+    } else if(answer.toUpperCase() != "Y" || answer.toUpperCase() != "N") {
+      console.log("Do you want a rematch? Please input (Y/N)");
+      rematch();
     }
   });
 }
