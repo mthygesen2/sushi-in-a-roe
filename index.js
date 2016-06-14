@@ -7,6 +7,7 @@ var playerOWins = [];
 var playerXWins = [];
 var catWins= [];
 
+
 ////Displays Game Board /////
 function playBoard() {
   console.log("     --->>>TIC-TAC-TOE<<<---");
@@ -46,6 +47,7 @@ function startGame(question){
 
 ///// Player X Turn for Play After it will go to O//////////
 function playerX(question){
+  var player1 = player1;
   if(winX(gameBoard) === true || winO(gameBoard) === true || noWinner(gameBoard) === true) {
     rematch();
   } else {
@@ -170,10 +172,10 @@ function winX(gameBoard) {
     console.log("▫▪▪▫▫▪▪▫▫▪▪▫       Player X       ▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫");
     console.log("▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫");
     console.log("▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫");
-    console.log("         The Score");
-    console.log("         Player O: " + playerOWins.length);
-    console.log("         Player X: " + playerXWins.length);
-    console.log("         The Cat: " + catWins.length);
+    console.log("           The Score");
+    console.log("           Player O: " + playerOWins.length);
+    console.log("           Player X: " + playerXWins.length);
+    console.log("           The Cat: " + catWins.length);
     return true;
   } else {
     return false;
@@ -199,11 +201,11 @@ function winO(gameBoard) {
     console.log(" ¸ • * ¸ • *         Player O         * • ¸ * • ¸ ");
     console.log(" ¸ • * ¸ • *  • ¸ * • ¸ • * ¸ • * ¸ • * • ¸ * • ¸ ");
     console.log(" ¸ • * ¸ • *  • ¸ * • ¸ • * ¸ • * ¸ • * • ¸ * • ¸ ");
-    console.log("        The Score");
-    console.log("        Player O: " + playerOWins.length);
-    console.log("        Player X: " + playerXWins.length);
-    console.log("        The Cat: " + catWins.length);
-     return true;
+    console.log("          The Score");
+    console.log("          Player O: " + playerOWins.length);
+    console.log("          Player X: " + playerXWins.length);
+    console.log("          The Cat: " + catWins.length);
+    return true;
   } else {
     return false;
   }
@@ -230,10 +232,10 @@ function noWinner(gameBoard) {
     console.log("=^..^=     The cat won this one.       =^..^= ");
     console.log("=^..^=       You both lost.            =^..^= ");
     console.log("=^..^=   =^..^=    =^..^=     =^..^=   =^..^= ");
-    console.log("        The Score");
-    console.log("        Player O: " + playerOWins.length);
-    console.log("        Player X: " + playerXWins.length);
-    console.log("        The Cat: " + catWins.length);
+    console.log("          The Score");
+    console.log("          Player O: " + playerOWins.length);
+    console.log("          Player X: " + playerXWins.length);
+    console.log("          The Cat: " + catWins.length);
     return true;
   } else {
     return false;
@@ -244,20 +246,26 @@ function noWinner(gameBoard) {
 //////Start Rematch game  ////
 
 function rematch() {
-  rl.question("Start New Game (Y/N)?", function(answer) {
-    if(answer.toUpperCase() === "Y") {
-      gameBoard = [0,1,2,3,4,5,6,7,8];
-      playBoard();
-      var gameArray = playerXWins.concat(playerOWins, catWins);
-      var numberOfGames = gameArray.length;
-      if(numberOfGames%2 === 0) {
-        playerX();
-      } else if (numberOfGames%2 != 0) {
-        playerO();
-      } else {
-      console.log("    Good game, see ya");
-      rl.close();
-      }
+  rl.question("Feeling like a rematch (Y/N)?", function(answer) {
+    // if(answer.toUpperCase() != "Y" || answer.toUpperCase() != "N") {
+    //   console.log("Please input (Y/N)");
+    //   rematch();
+      if(answer.toUpperCase() === "N") {
+        console.log("    Good game, see ya");
+        rl.close();
+      } else if(answer.toUpperCase() === "Y") {
+        gameBoard = [0,1,2,3,4,5,6,7,8];
+        playBoard();
+        var gameArray = playerXWins.concat(playerOWins, catWins);
+        var numberOfGames = gameArray.length;
+        if(numberOfGames%2 === 0) {
+          playerX();
+        } else if (numberOfGames%2 != 0) {
+          playerO();
+        }
+      } else if(answer.toUpperCase() != "Y" || answer.toUpperCase() != "N") {
+        console.log("Please input (Y/N)");
+        rematch();
     }
   });
 }
