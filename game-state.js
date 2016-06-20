@@ -1,14 +1,15 @@
 #!/usr/bin/env node
-var gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-var playerOWins = '';
-var playerXWins = '';
-var catWins= '';
+// var gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+var playerWinX = 0;
+var playerWinO = 0;
+var catWins = 0;
 var myGameState = new GameState();
 
 ///constructor function of GameState////eventually put in wins
 function GameState() {
-  this.gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+  this.gameBoard = [];
   this.currentPlayer = "X";
+
 }
 //////Validates turns to make sure it is numbers 0-8////////////
 GameState.prototype.validTurn = function(answer) {
@@ -48,7 +49,8 @@ GameState.prototype.hasPlayerWon = function(p) {
     || (g[2] === p) && (g[4] === p) && (g[6] === p);
 
   if(playerWon === true) {
-    playerXWins += 1;
+    var plusOne = "playerWin" + p;
+    plusOne += 1;
     return true;
   } else {
     return false;

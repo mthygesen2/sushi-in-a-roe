@@ -20,7 +20,9 @@ function playBoard() {
   console.log("          | " + "---------" +" |");
   console.log("          | " + g[6] + " | " + g[7] + " | " + g[8]+ " |");
   console.log("          " + "+-----------+");
+
 }
+
 
 
 /// Start game with Question and answer or Y or N///////////
@@ -30,14 +32,27 @@ function startGame(question){
   rl.question(question, function(answer) {
       if(answer.toUpperCase() === "Y") {
         console.log("*** Type 'quit' anytime to exit out of the game ***")
-        playBoard();
-        playerX();
+        gameSize();
+        // playBoard();
+        // playerX();
       } else {
         console.log("Alright, see ya.");
         rl.close();
       }
     });
 };
+
+function gameSize() {
+  rl.question("What size board?", function(answer) {
+    var g = game.myGameState.gameBoard;
+    for(var i = 0; i <= (answer*answer)-1; i ++) {
+       g.push(i);
+    }
+    for(var i = 0; i <= g.length; i ++) {
+      console.log(g[i]+ " | ");
+    }
+  });
+}
 
 ///// Player X Turn for Play After it will go to O//////////
 function playerX(){
@@ -173,6 +188,7 @@ function playerO(question){
           game.myGameState.gameBoard[answer] = "O";
           playBoard();
           playerX();
+          console.log(game.playerOWins);
         }
     });
   }
