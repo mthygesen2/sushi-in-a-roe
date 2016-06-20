@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 var gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-var playerOWins = [];
+var playerOWins = '';
 var playerXWins = '';
 var catWins= '';
 var myGameState = new GameState();
@@ -79,3 +79,4 @@ GameState.prototype.isThereATie = function () {
 }
 
 module.exports.GameState = GameState;
+module.exports.myGameState = myGameState;

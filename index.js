@@ -10,15 +10,15 @@ const rl = readline.createInterface({
 
 ////Displays Game Board /////
 function playBoard() {
-  var g = myGameState.gameBoard;
+  var g = game.myGameState.gameBoard;
   console.log("     --->>>TIC-TAC-TOE<<<---");
   console.log("     >> Type a number 0-8 <<");
   console.log("          " + "+-----------+");
-  console.log("          | " + g[0,2].join(" | ")+ g[0] + " | " + g[1] + " | " +            g[2] +" |");
-  console.log("          | "+ "---------" +" |");
-  console.log("          | " + g[3] + " | " + g[4]+ " | " + g[5]+ " |");
+  console.log("          | " + g[0] + " | " + g[1] + " | " + g[2] +" |");
   console.log("          | " + "---------" +" |");
-  console.log("          | " + g[6] + " | " + g[7]+ " | " + g[8]+ " |");
+  console.log("          | " + g[3] + " | " + g[4] + " | " + g[5]+ " |");
+  console.log("          | " + "---------" +" |");
+  console.log("          | " + g[6] + " | " + g[7] + " | " + g[8]+ " |");
   console.log("          " + "+-----------+");
 }
 
@@ -41,7 +41,7 @@ function startGame(question){
 
 ///// Player X Turn for Play After it will go to O//////////
 function playerX(){
-  if(myGameState.hasPlayerWon("X") === true ) {
+  if(game.myGameState.hasPlayerWon("X") === true ) {
     console.log("▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫");
     console.log("▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫");
     console.log("▫▪▪▫▫▪▪▫▫▪▪▫        WINNER        ▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫");
@@ -49,11 +49,11 @@ function playerX(){
     console.log("▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫");
     console.log("▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫");
     console.log("                  The Score");
-    console.log("                  Player O: " + playerOWins.length);
-    console.log("                  Player X: " + playerXWins.length);
-    console.log("                  The Cat: " + catWins.length);
+    console.log("                  Player O: " + game.playerOWins);
+    console.log("                  Player X: " + game.playerXWins);
+    console.log("                  The Cat: " + game.catWins);
     rematch();
-  } else if (myGameState.hasPlayerWon("O") === true) {
+  } else if (game.myGameState.hasPlayerWon("O") === true) {
     console.log(" ¸ • * ¸ • *  • ¸ * • ¸ • * ¸ • * ¸ • * • ¸ * • ¸ ");
     console.log(" ¸ • * ¸ • *  • ¸ * • ¸ • * ¸ • * ¸ • * • ¸ * • ¸ ");
     console.log(" ¸ • * ¸ • *          WINNER          * • ¸ * • ¸ ");
@@ -61,19 +61,19 @@ function playerX(){
     console.log(" ¸ • * ¸ • *  • ¸ * • ¸ • * ¸ • * ¸ • * • ¸ * • ¸ ");
     console.log(" ¸ • * ¸ • *  • ¸ * • ¸ • * ¸ • * ¸ • * • ¸ * • ¸ ");
     console.log("                   The Score");
-    console.log("                   Player O: " + playerOWins.length);
-    console.log("                   Player X: " + playerXWins.length);
-    console.log("                   The Cat: " + catWins.length);
+    console.log("                   Player O: " + game.playerOWins);
+    console.log("                   Player X: " + game.playerXWins);
+    console.log("                   The Cat: " + game.catWins);
     rematch();
-  } else if (myGameState.isThereATie() === true) {
+  } else if (game.myGameState.isThereATie() === true) {
     console.log("=^..^=   =^..^=    =^..^=    =^..^=    =^..^= ");
     console.log("=^..^=     The cat won this one.       =^..^= ");
     console.log("=^..^=       You both lost.            =^..^= ");
     console.log("=^..^=   =^..^=    =^..^=     =^..^=   =^..^= ");
     console.log("            The Score");
-    console.log("            Player O: " + playerOWins.length);
-    console.log("            Player X: " + playerXWins.length);
-    console.log("            The Cat: " + catWins.length);
+    console.log("            Player O: " + game.playerOWins);
+    console.log("            Player X: " + game.playerXWins);
+    console.log("            The Cat: " + game.catWins);
       rematch();
   } else {
     rl.question("What's your move Player X?", function(answer) {
@@ -93,14 +93,14 @@ function playerX(){
         console.log("     |      |");
         console.log("     |      | ");
         rl.close();
-      } else if(myGameState.validTurn(answer) === false) {
+      } else if(game.myGameState.validTurn(answer) === false) {
         console.log("Please put in a number 0-8");
         playerX();
-      } else if(myGameState.isTaken(answer) === true) {
+      } else if(game.myGameState.isTaken(answer) === true) {
           console.log("This spot is already taken. Please try again");
           playerX();
         } else {
-          myGameState.gameBoard[answer] = "X";
+          game.myGameState.gameBoard[answer] = "X";
           playBoard();
           playerO();
         }
@@ -111,7 +111,7 @@ function playerX(){
 
 ////////Player O Turn after will go to Player X /////////////
 function playerO(question){
-  if(myGameState.hasPlayerWon("X") === true) {
+  if(game.myGameState.hasPlayerWon("X") === true) {
     console.log("▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫");
     console.log("▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫");
     console.log("▫▪▪▫▫▪▪▫▫▪▪▫        WINNER        ▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫");
@@ -119,11 +119,11 @@ function playerO(question){
     console.log("▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫");
     console.log("▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫▪▪▫▫");
     console.log("                  The Score");
-    console.log("                  Player O: " + playerOWins.length);
-    console.log("                  Player X: " + playerXWins.length);
-    console.log("                  The Cat: " + catWins.length);
+    console.log("                  Player O: " + game.playerOWins);
+    console.log("                  Player X: " + game.playerXWins);
+    console.log("                  The Cat: " + game.catWins);
     rematch();
-  } else if (myGameState.hasPlayerWon("O") === true) {
+  } else if (game.myGameState.hasPlayerWon("O") === true) {
     console.log(" ¸ • * ¸ • *  • ¸ * • ¸ • * ¸ • * ¸ • * • ¸ * • ¸ ");
     console.log(" ¸ • * ¸ • *  • ¸ * • ¸ • * ¸ • * ¸ • * • ¸ * • ¸ ");
     console.log(" ¸ • * ¸ • *          WINNER          * • ¸ * • ¸ ");
@@ -131,19 +131,19 @@ function playerO(question){
     console.log(" ¸ • * ¸ • *  • ¸ * • ¸ • * ¸ • * ¸ • * • ¸ * • ¸ ");
     console.log(" ¸ • * ¸ • *  • ¸ * • ¸ • * ¸ • * ¸ • * • ¸ * • ¸ ");
     console.log("                   The Score");
-    console.log("                   Player O: " + playerOWins.length);
-    console.log("                   Player X: " + playerXWins.length);
-    console.log("                   The Cat: " + catWins.length);
+    console.log("                   Player O: " + (game.playerOWins));
+    console.log("                   Player X: " + game.playerXWins);
+    console.log("                   The Cat: " + game.catWins);
     rematch();
-  } else if(myGameState.isThereATie() === true) {
+  } else if(game.myGameState.isThereATie() === true) {
     console.log("=^..^=   =^..^=    =^..^=    =^..^=    =^..^= ");
     console.log("=^..^=     The cat won this one.       =^..^= ");
     console.log("=^..^=       You both lost.            =^..^= ");
     console.log("=^..^=   =^..^=    =^..^=     =^..^=   =^..^= ");
     console.log("            The Score");
-    console.log("            Player O: " + playerOWins.length);
-    console.log("            Player X: " + playerXWins.length);
-    console.log("            The Cat: " + catWins.length);
+    console.log("            Player O: " + game.playerOWins);
+    console.log("            Player X: " + game.playerXWins);
+    console.log("            The Cat: " + game.catWins);
     rematch();
   } else {
     rl.question("What's your move Play O?", function(answer) {
@@ -163,14 +163,14 @@ function playerO(question){
         console.log("     |      |");
         console.log("     |      | ");
         rl.close();
-      } else if(myGameState.validTurn(answer) === false) {
+      } else if(game.myGameState.validTurn(answer) === false) {
         console.log("Please put in a number 0-8");
         playerO();
-      } else if(myGameState.isTaken(answer) === true) {
+      } else if(game.myGameState.isTaken(answer) === true) {
           console.log("This spot is already taken. Please try again");
           playerO();
         } else {
-          myGameState.gameBoard[answer] = "O";
+          game.myGameState.gameBoard[answer] = "O";
           playBoard();
           playerX();
         }
@@ -199,9 +199,9 @@ function rematch() {
       console.log("    Good game, see ya");
       rl.close();
     } else if(answer.toUpperCase() === "Y") {
-      myGameState.gameBoard = [0,1,2,3,4,5,6,7,8];
+      game.myGameState.gameBoard = [0,1,2,3,4,5,6,7,8];
       playBoard();
-      var totalGames = catWins + playerOWins + playerXWins;
+      var totalGames = game.catWins + game.playerOWins + game.playerXWins;
       if(totalGames%2 === 0) {
         playerX();
       } else if (totalGames%2 != 0) {
