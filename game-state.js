@@ -1,16 +1,27 @@
 #!/usr/bin/env node
-// var gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-var playerWinX = 0;
-var playerWinO = 0;
-var catWins = 0;
-var myGameState = new GameState();
 
 ///constructor function of GameState////eventually put in wins
-function GameState() {
-  this.gameBoard = [];
+function GameState(gameDimension) {
   this.currentPlayer = "X";
-
+  this.gameDimension = gameDimension;
+  this.gameBoard = [];
+  for(var i = 0; i < (gameDimension*gameDimension); i ++) {
+       this.gameBoard.push(i);
+    }
 }
+
+GameState.prototype.mark = function (index) {
+  this.gameBoard[index] = this.currentPlayer;
+}
+
+GameState.prototype.changePlayer = function() {
+  if(this.currentPlayer === "X") {
+    this.currentPlayer = "O"
+  } else {
+    this.currentPlayer = "X"
+  }
+}
+
 //////Validates turns to make sure it is numbers 0-8////////////
 GameState.prototype.validTurn = function(answer) {
   if(!this.gameBoard.hasOwnProperty(answer)) {
@@ -38,47 +49,67 @@ GameState.prototype.hasCurrentPlayerWon =function() {
 
 GameState.prototype.hasPlayerWon = function(p) {
   var g = this.gameBoard;
-  var playerWon =
-    (g[0] === p) && (g[1] === p) && (g[2]=== p)
-    || (g[3] === p) && (g[4] === p) && (g[5] === p)
-    || (g[6] === p) && (g[7] === p) && (g[8] === p)
-    || (g[0] === p) && (g[3] === p) && (g[6] === p)
-    || (g[1] === p) && (g[4] === p) && (g[7] === p)
-    || (g[2] === p) && (g[5] === p) && (g[8] === p)
-    || (g[0] === p) && (g[4] === p) && (g[8] === p)
-    || (g[2] === p) && (g[4] === p) && (g[6] === p);
-
-  if(playerWon === true) {
-    var plusOne = "playerWin" + p;
-    plusOne += 1;
-    return true;
-  } else {
-    return false;
+  for(var column = 0; column < this.gameDimension; column += 1) {
+    var columnWin = true;
+    for(var i = column; i < g.length; i += this.gameDimension) {
+      if(g[i] != p) {
+        columnWin = false;
+      }
+    }
+    if(columnWin == true) {
+      return true;
+    }
   }
+
+  for(var row = 0; row < g.length; row += this.gameDimension) {
+    var rowWin = true;
+    for(var i = row; i < row + this.gameDimension; i += 1) {
+      if(g[i] != p) {
+        rowWin = false;
+      }
+    }
+    if(rowWin == true) {
+      return true;
+    }
+  }
+/////Diagonal starting at 0 ////
+
+  var d1Win = true;
+  for(var d1 = 0; d1 < g.length; d1 += (this.gameDimension + 1)) {
+    if(g[d1] != p) {
+      d1Win = false;
+    }
+  }
+  if(d1Win == true) {
+    return true;
+  }
+
+  var d2Win = true;
+  var increment = this.gameDimension - 1;
+  for(var d2 = increment; d2 < g.length-1; d2 += increment) {
+    if(g[d2] != p) {
+      d2Win = false;
+    }
+  }
+  if(d2Win == true) {
+    return true;
+  }
+
+   ////no one has won yet//////
+    return false;
 }
 
 GameState.prototype.isThereATie = function () {
   var g = this.gameBoard;
+  for(var tie = 0; tie < g.length; tie += 1) {
+    if((g[tie] != "X") && (g[tie] != "O")) {
+      return false;
+    }
+  }
   var playerXWon = this.hasPlayerWon("X");
   var playerOWon = this.hasPlayerWon("O");
-  var fullBoard =
-    ((g[0] === "O") || (g[0] === "X")) &&
-    ((g[1] === "O") || (g[1] === "X")) &&
-    ((g[2] === "O") || (g[2] === "X")) &&
-    ((g[3] === "O") || (g[3] === "X")) &&
-    ((g[4] === "O") || (g[4] === "X")) &&
-    ((g[5] === "O") || (g[5] === "X")) &&
-    ((g[6] === "O") || (g[6] === "X")) &&
-    ((g[7] === "O") || (g[7] === "X")) &&
-    ((g[8] === "O") || (g[8] === "X"));
 
-  if(fullBoard === true && playerXWon === false && playerOWon === false) {
-    catWins += 1;
-    return true;
-  } else {
-    return false;
-  }
+  return playerXWon != true && playerOWon != true;
 }
 
-module.exports.GameState = GameState;
-module.exports.myGameState = myGameState;
+module.exports = GameState;
