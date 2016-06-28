@@ -1,14 +1,15 @@
 0 info it worked if it ends with ok
 1 verbose cli [ '/Users/mao/.nvm/versions/node/v5.0.0/bin/node',
 1 verbose cli   '/Users/mao/.nvm/versions/node/v5.0.0/bin/npm',
-1 verbose cli   'start' ]
+1 verbose cli   'run',
+1 verbose cli   'watch' ]
 2 info using npm@3.3.6
 3 info using node@v5.0.0
 4 verbose stack Error: ENOENT: no such file or directory, open '/Users/mao/Desktop/tictactoe/package.json'
 4 verbose stack     at Error (native)
 5 verbose cwd /Users/mao/Desktop/tictactoe
 6 error Darwin 15.5.0
-7 error argv "/Users/mao/.nvm/versions/node/v5.0.0/bin/node" "/Users/mao/.nvm/versions/node/v5.0.0/bin/npm" "start"
+7 error argv "/Users/mao/.nvm/versions/node/v5.0.0/bin/node" "/Users/mao/.nvm/versions/node/v5.0.0/bin/npm" "run" "watch"
 8 error node v5.0.0
 9 error npm  v3.3.6
 10 error path /Users/mao/Desktop/tictactoe/package.json

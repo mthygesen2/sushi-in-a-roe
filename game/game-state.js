@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 
 ///constructor function of GameState////eventually put in wins
 function GameState(gameDimension) {
