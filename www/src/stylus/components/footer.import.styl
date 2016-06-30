@@ -1,0 +1,80 @@
+//-- The footer for the site ---------------------------------------------------
+#footer
+  color white
+  flex-center()
+  font-size 0.8em
+  min-height 100px
+
+  +below('s')
+    display block
+    min-height auto
+    text-align center
+
+  ul
+    col(1/3)
+    margin 0
+    padding 0
+
+    +below('s')
+      float none !important
+      margin 2em 0
+
+    li
+      display inline-block
+
+    &.nav-links
+      padding 0
+
+      +below('l')
+        col(35/100)
+
+      +below('s')
+        width 100%
+
+      li
+        border-right 1px solid white
+        padding 0 1em
+
+        &:last-child
+          border-right none
+
+        a
+          color white
+          text-decoration none
+
+          &:hover
+            text-decoration underline
+
+    &.social-links
+      text-align center
+
+      +below('l')
+        col(30/100)
+        text-align center
+
+      +below('s')
+        width 100%
+
+      li
+        padding 0 0.5rem
+
+        a
+          color white
+
+        +below('s')
+          padding 0 0.75rem
+
+        .fa
+          font-size 1rem
+
+          +below('s')
+            font-size 1.5rem
+
+    &.legal-links
+      text-align right
+
+      +below('l')
+        col(35/100)
+
+      +below('s')
+        width 100%

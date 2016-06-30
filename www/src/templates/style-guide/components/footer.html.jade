@@ -1,0 +1,31 @@
+extend ../../style-guide.html
+
+block vars
+  - var bodyClass = 'style-guide footer';
+
+block sub_content
+  header#header
+    h1 Footers
+    p Footers are the last thing on any page of the site. They typically contain site links, social media links, and legal disclaimers and copyrights. Footers can technically be any element, but they are most often used for the <code>footer</code> element of a page. To make a footer, simply add the <code>#footer</code> id to any element.
+    p Currently, the children elements of <code>#footer</code> must all be <code>ul</code> elements. The following classnames should be applied to each of the three <code>ul</code> as well. <code>.nav-links</code>, <code>.social-links</code>, <code>.legal-links</code>
+
+  .example
+    #footer
+      ul.nav-links
+        li Home
+        li Payments
+        li Terms
+        li Privacy
+
+      ul.social-links
+        li
+          i.fa.fa-facebook
+        li
+          i.fa.fa-twitter
+        li
+          i.fa.fa-google-plus
+        li
+          i.fa.fa-github-alt
+
+      ul.legal-links
+        li Copyright 2016. Mash LLC. All rights reserved.

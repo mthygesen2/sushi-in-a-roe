@@ -1,0 +1,114 @@
+extend ../../style-guide.html
+
+block vars
+  - var bodyClass = 'style-guide inputs';
+
+block sub_content
+  header#header
+    h1 Inputs
+    p This page depicts all the basic input elements for use in this website.
+
+  section.card
+    .card-content
+      h2.card-title= 'Input'
+      p All the HTML5 input types: text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color.
+      p <strong>Note:</strong> Inputs will NOT be fully styled if their type is not properly declared!
+      .example
+        .form-group
+          label(for='email') Email:
+          input#email.form-control(type='email', name='email', placeholder='name@email.com')
+
+        .form-group
+          label(for='password') Password:
+          input#password.form-control(type='password', name='password', placeholder='At least 6 characters')
+
+  section.card
+    .card-content
+      h2.card-title= 'Textarea'
+      .example
+        .form-group
+          label(for='comment') Comment:
+          textarea#comment.form-control(rows='5', name='comment', placeholder='Up to 500 characters allowed.')
+
+  section.card
+    .card-content
+      h2.card-title= 'Checkboxes'
+      p Checkboxes are used if you want the user to select any number of options from a list of preset options. The following example contains three checkboxes. The last option is disabled:
+      .example
+        .checkbox
+          label
+            input(type='checkbox', value='1')
+            span Option 1
+        .checkbox
+          label
+            input(type='checkbox', value='2')
+            span Option 2
+        .checkbox
+          label
+            input(type='checkbox', value='3', disabled)
+            span Option 3
+
+      p Use the <code>.checkbox-inline</code> class if you want the checkboxes to appear on the same line:
+      .example
+        label.checkbox-inline
+          input(type='checkbox', value='1')
+          span Option 1
+        label.checkbox-inline
+          input(type='checkbox', value='2')
+          span Option 2
+        label.checkbox-inline
+          input(type='checkbox', value='4')
+          span Option 3
+
+  section.card
+    .card-content
+      h2.card-title= 'Radio Buttons'
+      p Radio buttons are used if you want to limit the user to just one selection from a list of preset options. The following example contains three radio buttons. The last option is disabled:
+      .example
+        .radio
+          label
+            input(type='radio', value='1', name='optradio')
+            span Option 1
+        .radio
+          label
+            input(type='radio', value='2', name='optradio')
+            span Option 2
+        .radio
+          label
+            input(type='radio', value='3', name='optradio', disabled)
+            span Option 3
+
+      p Use the <code>.checkbox-inline</code> class if you want the checkboxes to appear on the same line:
+      .example
+        label.radio-inline
+          input(type='radio', value='1', name='optradio1')
+          span Option 1
+        label.radio-inline
+          input(type='radio', value='2', name='optradio1')
+          span Option 2
+        label.radio-inline
+          input(type='radio', value='4', name='optradio1')
+          span Option 3
+
+  section.card
+    .card-content
+      h2.card-title= 'Select List'
+      .example
+        .form-group
+          label(for='sel1') Select list (select one):
+          select#sel1.form-control
+            option 1
+            option 2
+            option 3
+            option 4
+
+        .form-group
+          label(for='sel2') Multiple select list (hold ctrl or shift (or drag with the mouse) to select more than one):
+          select#sel2.form-control(multiple)
+            option 1
+            option 2
+            option 3
+            option 4
+            option 5
+            option 6
+            option 7

@@ -1,0 +1,22 @@
+//-- The style guide template --------------------------------------------------
+.style-guide
+  background yellow-accent-1
+
+  #sidebar
+    col(1/5, cycle: 2)
+
+    h3
+      font-size 1.25rem
+      margin-bottom 0.25em
+      text-align center
+      text-shadow 1px 1px 0 rgba(255,255,255,1)
+
+  #page
+    col(4/5, cycle: 2)
+
+  &.color-palette
+    [class^="col-"]
+      div
+        font-size 0.8em
+        font-weight bold
+        padding 1.5em

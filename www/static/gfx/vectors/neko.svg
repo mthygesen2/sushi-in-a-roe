@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="49px" height="33px" viewBox="0 0 49 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>Neko color Copy 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M5.6,18 C5.6,15.2902778 8.4,9.8 8.4,9.8 C8.4,9.8 18.6537037,4.6 24,4.6 C29.0537037,4.6 39.6,9.8 39.6,9.8 C39.6,9.8 41.6,15.1675926 41.6,18 C41.6,22.3675926 39.6,31.4 39.6,31.4 C39.6,31.4 29.0356481,33 24,33 C18.6356481,33 8.4,31.4 8.4,31.4 C8.4,31.4 5.6,22.4902778 5.6,18 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="36" height="28.4" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.4">
+        <g id="Neko-color-Copy-2">
+            <g id="Neko">
+                <g id="Cat">
+                    <g id="Ears" transform="translate(0.000000, 0.600000)" stroke="#FFFFFC" stroke-width="1.6" fill="#478779">
+                        <path d="M40.7013494,3.63920479 C44.1013494,3.63920479 47.5013494,13.2392048 47.5013494,13.2392048 L33.9013494,13.2392048 C33.9013494,13.2392048 37.3013494,3.63920479 40.7013494,3.63920479 Z" id="Triangle-12" transform="translate(40.701349, 8.439205) rotate(49.000000) translate(-40.701349, -8.439205) "></path>
+                        <path d="M8.89865055,3.44190369 C12.2986506,3.44190369 15.6986506,13.0419037 15.6986506,13.0419037 L2.09865055,13.0419037 C2.09865055,13.0419037 5.49865055,3.44190369 8.89865055,3.44190369 Z" id="Triangle-12-Copy" transform="translate(8.898651, 8.241904) rotate(319.000000) translate(-8.898651, -8.241904) "></path>
+                    </g>
+                    <use id="Rectangle-22" stroke="#FFFFFC" mask="url(#mask-2)" stroke-width="1.6" fill="#FFFFFC" xlink:href="#path-1"></use>
+                    <g id="Eyes" transform="translate(14.400000, 15.800000)" stroke="#478779" stroke-width="0.8">
+                        <path d="M0.617542067,2.95921893 C0.617542067,2.95921893 1.41754207,0.220416369 4.41754207,0.159218932 C7.41754207,0.0980214949 8.21754207,2.55921893 8.21754207,2.55921893" id="Path-28"></path>
+                        <path d="M11.0175421,2.95921893 C11.0175421,2.95921893 11.8175421,0.220416369 14.8175421,0.159218932 C17.8175421,0.0980214949 18.6175421,2.55921893 18.6175421,2.55921893" id="Path-28-Copy" transform="translate(14.817542, 1.558658) scale(-1, 1) translate(-14.817542, -1.558658) "></path>
+                    </g>
+                    <g id="Nose" transform="translate(19.400000, 24.600000)">
+                        <path d="M4.6,3.37979888 C4.6,3.37979888 5.06315789,1.79417634 6.8,1.75874625 C8.53684211,1.72331615 9,3.14821993 9,3.14821993" id="Path-28-Copy-2" stroke="#478779" stroke-width="0.5" transform="translate(6.800000, 2.568948) scale(-1, -1) translate(-6.800000, -2.568948) "></path>
+                        <path d="M0.617542067,3.37979888 C0.617542067,3.37979888 1.08069996,1.79417634 2.81754207,1.75874625 C4.55438417,1.72331615 5.01754207,3.14821993 5.01754207,3.14821993" id="Path-28-Copy-3" stroke="#478779" stroke-width="0.5" transform="translate(2.817542, 2.568948) scale(-1, -1) translate(-2.817542, -2.568948) "></path>
+                        <path d="M2.57517432,0.990028095 C2.20539873,0.443250676 2.44038967,0 3.09791463,0 L6.08561645,0 C6.74409354,0 6.98905875,0.462744141 6.60835676,0.990028095 C6.60835676,0.990028095 5.93483011,2.4 4.59176554,2.4 C3.24870096,2.4 2.57517432,0.990028095 2.57517432,0.990028095 Z" id="Path-30" fill="#478779"></path>
+                    </g>
+                    <polyline id="Path-33" stroke="#478779" stroke-width="0.5" points="38.4 21.4 32 24.2 37.6 26.2"></polyline>
+                    <path d="M32.4,24.2 L38,24.2" id="Line" stroke="#478779" stroke-width="0.5" stroke-linecap="square"></path>
+                    <g id="R-whiskers" transform="translate(32.000000, 21.400000)"></g>
+                    <g id="L-whiskers" transform="translate(9.600000, 21.400000)" stroke="#478779" stroke-width="0.5">
+                        <polyline id="Path-33-Copy" transform="translate(3.200000, 2.400000) scale(-1, 1) translate(-3.200000, -2.400000) " points="6.4 0 0 2.8 5.6 4.8"></polyline>
+                        <path d="M0.4,2.8 L6,2.8" id="Line-Copy" stroke-linecap="square" transform="translate(3.200000, 2.800000) scale(-1, 1) translate(-3.200000, -2.800000) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

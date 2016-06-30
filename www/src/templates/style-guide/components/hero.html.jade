@@ -1,0 +1,31 @@
+extend ../../style-guide.html
+
+block vars
+  - var bodyClass = 'style-guide hero';
+
+block sub_content
+  header#header
+    h1 Hero
+    p There can only be one hero... That is on any single page anyway. Hero elements are typically used as the first thing a user sees on a landing page. For this website, the hero is used in just this way, but they can also be used as landing pages for sections of content.
+    p Heros can technically be any element, but they are most often used for the <code>header</code> element of a page. To make a hero, simply add the <code>#hero</code> id to any element.
+
+  .example
+    #hero
+      .wrapper
+        .logo
+          img(src='/gfx/vectors/MashM.svg', height='158', width='150')
+        .title
+          h1 Hero Example Title
+        .cta
+          btn.btn.default Call to Action Button
+
+  .example
+    #hero.yellow.lighten-5
+      .wrapper
+        .logo
+          img(src='/gfx/vectors/MashM.svg', height='158', width='150')
+        .title
+          h1 Hero with Optional GFX
+        .cta
+          btn.btn.default Call to Action Button
+        img.hero-vector(src='/gfx/vectors/international-exports.svg', height='250')

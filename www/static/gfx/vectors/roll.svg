@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="90px" height="86px" viewBox="0 0 90 86" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>Maguro</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Graph-icons--Copy-2" transform="translate(-124.000000, -5.000000)">
+            <g id="Pick-your-Icon">
+                <g id="Maguro">
+                    <g transform="translate(124.000000, 6.000000)">
+                        <polygon id="Rectangle-8" fill="#4CAE71" points="0 16 45.4714088 16 44.7531362 53 0.753136218 53"></polygon>
+                        <ellipse id="Oval-9" stroke="#4CAE71" stroke-width="2" fill="#FFFFFC" cx="23" cy="14.5" rx="22" ry="14.5"></ellipse>
+                        <path d="M23.055817,68.4466858 C35.3473636,68.4466858 44.3000031,62.3022152 44.3000031,52 L0.800003052,52 C0.800003052,64.1502645 10.7642704,68.4466858 23.055817,68.4466858 Z" id="Oval-9-Copy" fill="#4CAE71"></path>
+                        <rect id="Rectangle-9" fill="#4CAE71" x="16" y="8" width="14" height="14" rx="3"></rect>
+                        <polygon id="Rectangle-8-Copy" fill="#4CAE71" points="44 32 89.4714088 32 88.7531362 69 44.7531362 69"></polygon>
+                        <ellipse id="Oval-9-Copy-3" stroke="#4CAE71" stroke-width="2" fill="#FFFFFC" cx="67" cy="30.5" rx="22" ry="14.5"></ellipse>
+                        <path d="M67.311631,84.4466858 C79.7444597,84.4466858 88.8000031,78.3022152 88.8000031,68 L44.8000031,68 C44.8000031,80.1502645 54.8788022,84.4466858 67.311631,84.4466858 Z" id="Oval-9-Copy-2" fill="#4CAE71"></path>
+                        <rect id="Rectangle-9-Copy" fill="#4CAE71" x="60" y="24" width="14" height="14" rx="3"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

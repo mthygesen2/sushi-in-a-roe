@@ -1,0 +1,52 @@
+#whichPlayer
+  .title
+    text-align center
+    height auto
+    background-color color-ttt-green-2
+    display flex
+    justify-content center
+  .title:nth-child(2) {
+    background-color: color-ttt-green-3
+  }
+  p
+    color white
+    font-size 2em
+    align-self center
+#player1, #player2
+  display flex
+  flex-flow column
+
+#iconsForP1
+  display flex
+#iconsForP1, .playerSelectIcons
+  label
+    input[type="radio"]
+      display none
+    img
+      width 80px
+      height 80px
+      padding 5px
+      margin 5px
+      border 1px solid white
+    input[type="radio"]:checked + img
+      background-color white
+    #submitButton
+      display: block;
+#iconsForP2
+  display flex
+  flex-flow column
+  width 320px
+  max-width 800px
+  @media screen and (min-width: 800px) {
+    width auto
+    flex-flow row
+  }
+  table
+    width auto
+    margin 10px
+    th
+      text-align: center;
+      color white
+    tr
+      td
+        border 1px solid white

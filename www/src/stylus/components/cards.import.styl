@@ -1,0 +1,101 @@
+//-- Cards ---------------------------------------------------------------------
+// Based on Materialize v0.97.5 (http://materializecss.com/)
+.card-panel
+  background-color card-bg-color
+  border-radius 0.25em
+  margin card-margin-top 0 card-margin-bottom
+  padding card-padding
+  transition box-shadow 0.25s
+  @extend .z-depth-1
+
+.card
+  background-color card-bg-color
+  border-radius 0.25em
+  margin card-margin-top 0 card-margin-bottom
+  position relative
+  transition box-shadow 0.25s
+  @extend .z-depth-1
+
+  .card-title
+    font-size 1.5em
+    margin 0
+
+  // Card Sizes
+  &.small, &.medium, &.large
+    position relative
+
+    .card-image
+      max-height 60%
+      overflow hidden
+
+    .card-content
+      max-height 40%
+      overflow hidden
+
+    .card-action
+      position absolute
+      bottom 0
+      left 0
+      right 0
+
+  &.small
+    height 300px
+
+  &.medium
+    height 400px
+
+  &.large
+    height 500px
+
+  .card-image
+    position relative
+
+    // Image background for content
+    img
+      display block
+      border-radius 2px 2px 0 0
+      position relative
+      left 0
+      right 0
+      top 0
+      bottom 0
+      width 100%
+
+    .card-title
+      bottom 0
+      color card-bg-color
+      position absolute
+      left 0
+      padding card-padding
+
+  .card-content
+    border-radius 0 0 2px 2px
+    padding card-padding
+
+    p
+      color inherit
+
+    .example
+      clearfix()
+      border-top 1px dashed green-darken-1
+      border-bottom 1px dashed green-darken-1
+      border-left 4px solid green-darken-1
+      margin-top 1em
+      padding 1em
+
+      p
+        margin 0
+
+  .card-action
+    border-top 1px solid rgba(160,160,160,.2)
+    background-color inherit
+    padding card-padding
+    position relative
+    z-index 2
+
+    a:not(.btn)
+      color color-app-primary
+      margin-right 1em
+      text-decoration none
+      text-transform uppercase
+      transition color 0.3s ease

@@ -1,0 +1,58 @@
+extend ../../style-guide.html
+
+block vars
+  - var bodyClass = 'style-guide cards';
+
+block sub_content
+  header#header
+    h1 Cards
+    p This page depicts how the card elements are displayed on this site. This design does its best to follow the guidelines setforth by Google for Cards in the material design philosophy. <a href="https://www.google.com/design/spec/components/cards.html#" target="_blank">Link</a>
+
+  section.card
+    .card-content
+      h2.card-title= 'Basic Card'
+      p You're looking at a basic card. Cards typically contain a title, some content, and then action links. Some example action links have been added below. Cards also typically have depth by adding a box shadow with the z-depth classes.
+    .card-action
+      a(href='#') This is a link
+      a(href='#') This is a link
+
+  section.card
+    .card-image
+      img(src='/gfx/vectors/ecommerce-fulfillment.svg')
+    .card-content
+      h2.card-title= 'Image Card'
+      p This is an image card that contains an image, a caption, and some links below. Cards are designed to fill their parent container so when using cards next to each other, it's best to put them in a grid.
+    .card-action
+      a(href='#') This is a link
+      a(href='#') This is a link
+
+  .grid-three-across
+    section.card
+      .card-image
+        img(src='/gfx/vectors/ecommerce-fulfillment.svg')
+      .card-content
+        h2.card-title= 'Ecommerce Fulfillment'
+        p This is an image card that contains an image, a caption, and some links below. Cards are designed to fill their parent container so when using cards next to each other, it's best to put them in a grid.
+      .card-action
+        a(href='#') This is a link
+        a(href='#') This is a link
+
+    section.card
+      .card-image
+        img(src='/gfx/vectors/international-exports.svg')
+      .card-content
+        h2.card-title= 'International Exports'
+        p This is an image card that contains an image, a caption, and some links below. Cards are designed to fill their parent container so when using cards next to each other, it's best to put them in a grid.
+      .card-action
+        a(href='#') This is a link
+        a(href='#') This is a link
+
+    section.card
+      .card-image
+        img(src='/gfx/vectors/software-development.svg')
+      .card-content
+        h2.card-title= 'Software Development'
+        p This is an image card that contains an image, a caption, and some links below. Cards are designed to fill their parent container so when using cards next to each other, it's best to put them in a grid.
+      .card-action
+        a(href='#') This is a link
+        a(href='#') This is a link

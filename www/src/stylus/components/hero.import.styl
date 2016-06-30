@@ -1,0 +1,35 @@
+//-- The hero card on the landing page -----------------------------------------
+#hero
+  margin 1em 0
+  overflow hidden
+  text-align center
+
+  .wrapper
+    margin 0 auto
+    max-width 800px
+
+  .logo
+    margin 2em auto
+
+  .title
+    margin 2em auto
+
+    h1
+      border-top 1px solid color-text-main
+      border-bottom 1px solid color-text-main
+      color color-text-main
+      display inline-block
+      font-size 2.8em
+      font-weight normal
+      margin 0
+      padding 0.2em 0
+      text-transform uppercase
+
+      +below('l')
+        font-size 2em
+
+      +below('s')
+        font-size 1.4em
+
+  .hero-vector
+    margin-top 1em

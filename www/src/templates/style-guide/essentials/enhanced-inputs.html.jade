@@ -1,0 +1,97 @@
+extend ../../style-guide.html
+
+block vars
+  - var bodyClass = 'style-guide enhanced-inputs';
+
+block sub_content
+  header#header
+    h1 Enhanced Inputs
+    p This page depicts all the enhanced input elements for use in this website.
+
+  section.card
+    .card-content
+      h2.card-title= 'Static Control'
+      p If you need to insert plain text next to a form label within a horizontal form, use the <code>.form-control-static</code> class on a <code>&#60;p&#62;</code> element:
+      .example
+        form.form-horizontal(role='form')
+          .form-group
+            label.control-label(for='horizontal-email') Email:
+            .input
+              p#horizontal-email.form-control-static name@email.com
+
+          .form-group
+            label.control-label(for='horizontal-password') Password:
+            .input
+              input#horizontal-password.form-control(type='password', name='password', placeholder='At least 6 characters')
+
+          .input-pull-right
+            button.btn.default(type='submit') Submit
+
+  section.card
+    .card-content
+      h2.card-title= 'Form Control States'
+      ul
+        li <strong>INPUT FOCUS</strong> - The outline of the input is removed and a box-shadow is applied on focus
+        li <strong>DISABLED INPUTS</strong> - Add a <code>disabled</code> attribute to disable an input field
+        li <strong>DISABLED FIELDSETS</strong> - Add a <code>disabled</code> attribute to a fieldset to disable all controls within
+        li <strong>READONLY INPUTS</strong> - Add a <code>readonly</code> attribute to an input to prevent user input
+        li <strong>VALIDATION STATES</strong> - Bootstrap includes validation styles for error, warning, and success messages. To use, add <code>.has-warning</code>, <code>.has-error</code>, or <code>.has-success</code> to the parent element
+        li <strong>ICONS</strong> - You can add icons with the <code>.with-icon</code> class and an icon
+        li <strong>HIDDEN LABELS</strong> - Add a <code>.sr-only</code> class on non-visible labels
+
+  section.card
+    .card-content
+      h2.card-title= 'Input with Icon'
+      p Any text-based input can have an icon prefixed.
+      p To add an icon to an input field, wrap the element with a <code>.with-icon</code> element and include the <code>i</code> element and <code>input</code> element as children.
+      .example
+        .form-group
+          label(for='email') Email:
+
+          .with-icon
+            i.fa.fa-envelope-o
+            input#email.form-control(type='email', name='email', placeholder='name@email.com')
+
+        .form-group
+          label(for='phone') Phone:
+
+          .with-icon
+            i.fa.fa-phone
+            input#phone.form-control(type='tel', name='phone', placeholder='503-664-0088')
+
+  section.card
+    .card-content
+      h2.card-title= 'Textarea with Icon'
+      .example
+        .form-group
+          label(for='comment') Comment:
+
+          .with-icon
+            i.fa.fa-comment-o
+            textarea#comment.form-control(rows='5', name='comment', placeholder='Up to 500 characters allowed.')
+
+  section.card
+    .card-content
+      h2.card-title= 'Input with Icon (Hidden Labels)'
+      p <strong>Tip:</strong> If you don't include a label for every input, screen readers will have trouble with your forms. You can hide the labels for all devices, except screen readers, by using the <code>.sr-only</code> class:
+      .example
+        .form-group
+          label.sr-only(for='email1') Email:
+
+          .with-icon
+            i.fa.fa-envelope-o
+            input#email1.form-control(type='email', name='email', placeholder='Email address')
+
+        .form-group
+          label.sr-only(for='phone1') Phone:
+
+          .with-icon
+            i.fa.fa-phone
+            input#phone1.form-control(type='tel', name='phone', placeholder='Phone number')
+
+        .form-group
+          label.sr-only(for='comment1') Comment:
+
+          .with-icon
+            i.fa.fa-comment-o
+            textarea#comment1.form-control(rows='5', name='comment', placeholder='Please share your thoughts. Up to 500 characters allowed.')

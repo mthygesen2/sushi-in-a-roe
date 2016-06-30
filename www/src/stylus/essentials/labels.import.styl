@@ -1,0 +1,50 @@
+//-- Labels --------------------------------------------------------------------
+// Based on Bootstrap v3.3.6 (http://getbootstrap.com)
+.label
+  border-radius label-border-radius
+  color label-color
+  display inline
+  font-size 75%
+  font-weight bold
+  line-height 1
+  padding 0.2em 0.6em 0.3em
+  text-align center
+  vertical-align baseline
+  white-space nowrap
+
+  // Empty labels collapse automatically (not available in IE8)
+  &:empty
+    display none
+
+  // Quick fix for labels in buttons
+  .btn &
+    position relative
+    top -1px
+
+// Add hover effects, but only for links
+a.label
+  &:hover,
+  &:focus
+    color label-link-hover-color
+    text-decoration none
+    cursor pointer
+
+// Colors
+// Contextual variations (linked labels get darker on :hover)
+.label-default
+  label-variant(label-default-bg-color)
+
+.label-primary
+  label-variant(label-primary-bg-color)
+
+.label-success
+  label-variant(label-success-bg-color)
+
+.label-info
+  label-variant(label-info-bg-color)
+
+.label-warning
+  label-variant(label-warning-bg-color)
+
+.label-danger
+  label-variant(label-danger-bg-color)
