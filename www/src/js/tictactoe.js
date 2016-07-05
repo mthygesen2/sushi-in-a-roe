@@ -100,6 +100,13 @@ gamePresenter.prototype.runGame = function() {
 var state = new GameState(3);
 var presenter = new gamePresenter(state);
 
+////Once both players have selected an icon then Next button show
+  function showNext() {
+    if('#submitButtonP1'.value === "set" && '#submitButtonP1'.value === "set") {
+      console.log('#submitButtonP1'.value);
+      $('#startGameButton').show();
+    }
+  }
 
 $(document).ready(function() {
 ////Hides all boards at the start of game
@@ -108,12 +115,14 @@ $(document).ready(function() {
   $('#threeBoard').hide();
   $('#fourBoard').hide();
   $('#fiveBoard').hide();
+//////Hides scores and Player Icons to select
   $('#score').hide();
   $('#iconsForP1').hide();
   $('#iconsForP2').hide();
+  $('#startGameButton').hide();
 
-////starts the Game
-  $('#startGameButton h2').click(function() {
+////starts the Game, player can then chose the board size
+  $('#startGameButton p').click(function() {
     $('#playerList').hide();
     $('#whichBoard').show();
     $('#boardList').show();
@@ -125,22 +134,26 @@ $(document).ready(function() {
   });
   $('#whichPlayer #player2 p').click(function() {
     $('#iconsForP2').slideToggle();
+
   });
 //////Title will take you back to the board page
   $('#hero .title').click(function() {
     $('#playerList').show();
   });
 
-  ////form for Player Icons
+  ////form for Player Icons sets only one selection of icon
   $('#submitButtonP1').click( function() {
     $("form#iconP1").submit(function(event) {
       event.preventDefault();
      iconP1 = $('#iconP1 input:checked').val();
-      $("#player1score").prepend(iconP1);
-     console.log(iconP1);
+      $('#player1score').prepend(iconP1);
+      $('#iconP1 :radio').attr('disabled', true);
+      $('#submitButtonP1').attr('disabled', true);
     });
-    // submitButtonP1.disabled = true;
-    // submitButtonP1.value = "Player 1 Icon Set";
+     this.value = "set";
+     console.log(this.value);
+    $(this).addClass('clicked');
+    showNext();
   });
 
   $('#submitButtonP2').one("click",function() {
@@ -148,9 +161,12 @@ $(document).ready(function() {
       event.preventDefault();
      iconP2 = $('#iconP2 input:checked').val();
      $("#player2score").prepend(iconP2);
+     $("#iconP2 :radio").attr("disabled", true);
+     $('#submitButtonP2').attr('disabled', true);
     });
-    // submitButtonP2.disabled = true;
-    // submitButtonP2.value = "Player 2 Icon Set";
+    this.value = "set";
+   $(this).addClass('clicked');
+   showNext();
   });
 
 

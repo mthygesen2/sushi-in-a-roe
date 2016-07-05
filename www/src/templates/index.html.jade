@@ -12,31 +12,9 @@ block content
         img(src='/gfx/vectors/icon.svg', height='158', width='150')
       .title
         h1 SUSHI IN A ROE
-        .button 
-          span 
-          
-  include components/board
-  include components/player
-      
-    //- 
-    //- section.card-panel.children-col-one-half.clearfix
-    //-   .feature.gfx-top
-    //-     .wrapper
-    //-       .gfx
-    //-         img.service-vector(src='/gfx/vectors/stylus.svg')
-    //-       .description
-    //-         h2.title Powered by<br>Stylus
-    //-         p "CSS needs a hero." - <a href="http://stylus-lang.com/" target="_blank">stylus-lang.com</a>
-    //-         p Cut out the minutiae of CSS syntax and focus on logic structure that makes sense.
-    //- 
-    //-   .feature.gfx-top
-    //-     .wrapper
-    //-       .gfx
-    //-         img.service-vector(src='/gfx/vectors/pug.svg')
-    //-       .description
-    //-         h2.title Powered by<br>Pug (Jade)
-    //-         p Don't ever make another HTML syntax mistake with Pug. <a href="http://jade-lang.com/" target="_blank">jade-lang.com</a>
-
+  .main-content    
+    include components/board
+    include components/player
   include components/footer
   
 block scripts
