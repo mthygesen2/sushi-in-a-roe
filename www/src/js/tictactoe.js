@@ -1,6 +1,6 @@
 var catWins = document.getElementById('#nekoScores');
-var playerXWins = document.getElementById('#player1Scores');
-var playerOWins = document.getElementById('#player2Scores');
+var playerXWins = document.getElementById('#numberScoreP1');
+var playerOWins = document.getElementById('#numberScoreP2');
 var icon = "";
 var iconP1 = "";
 var iconP2= "";
@@ -39,21 +39,55 @@ gamePresenter.prototype.runGame = function() {
           $(this).html(iconP1);
         } else if (gs.currentPlayer === "O") {
           $(this).addClass("replaceIcon");
-          $(this).html(iconP2)
+          $(this).html(iconP2);
         }
        if(gs.hasCurrentPlayerWon() === true) {
-          alert("You have won");
           var playerXWon = gs.hasPlayerWon("X");
           var playerOWon = gs.hasPlayerWon("O");
           if(playerXWon === true) {
+            vex.dialog.confirm({
+              message: "PLAYER 1 WON!!!!! <br> Do you want to play again?",
+              callback: function(value) {
+                if(value === false) {
+                  location.reload();
+                } else {
+                  $('#whichBoard').show();
+                  $('#boardList').show();
+                  $('#whichBoard').siblings().hide();
+                }
+              }
+            });
             playerXWins += 1;
-            $('#player1Score').html(playerXWins);
+            $('#numberScoreP1').html(playerXWins);
           } else {
+            vex.dialog.confirm({
+              message: "PLAYER 2 WON!!!!! <br> Do you want to play again?",
+              callback: function(value) {
+                if(value === false) {
+                  location.reload();
+                } else {
+                  $('#whichBoard').show();
+                  $('#boardList').show();
+                  $('#whichBoard').siblings().hide();
+                }
+              }
+            });
             playerOWins += 1;
-            $('#player2Score').html(playerOWins);
+            $('#numberScoreP2').html(playerOWins);
           }
        } else if(gs.isThereATie() === true) {
-            alert("Tie Game");
+         vex.dialog.confirm({
+           message: "NEKO ATE YOUR SUSHI! <br> Do you want to play again?",
+           callback: function(value) {
+             if(value === false) {
+               location.reload();
+             } else {
+               $('#whichBoard').show();
+               $('#boardList').show();
+               $('#whichBoard').siblings().hide();
+             }
+           }
+         });
             catWins += 1;
             $('#nekoScore').html(catWins);
           }
@@ -69,8 +103,8 @@ var presenter = new gamePresenter(state);
 
 $(document).ready(function() {
 ////Hides all boards at the start of game
-  // $('#boardList').hide();
-  // $('#whichBoard').hide();
+  $('#boardList').hide();
+  $('#whichBoard').hide();
   $('#threeBoard').hide();
   $('#fourBoard').hide();
   $('#fiveBoard').hide();
@@ -78,6 +112,13 @@ $(document).ready(function() {
   $('#iconsForP1').hide();
   $('#iconsForP2').hide();
 
+////starts the Game
+  $('#startGameButton h2').click(function() {
+    $('#playerList').hide();
+    $('#whichBoard').show();
+    $('#boardList').show();
+    $('#whichBoard').siblings().hide();
+  });
 ///Player Icon toggles
   $('#whichPlayer #player1 p').click(function() {
     $('#iconsForP1').slideToggle();
@@ -87,9 +128,7 @@ $(document).ready(function() {
   });
 //////Title will take you back to the board page
   $('#hero .title').click(function() {
-    $('#threeBoard .box').detach();
-    $('#whichBoard').show();
-    $('#whichBoard').siblings().hide();
+    $('#playerList').show();
   });
 
   ////form for Player Icons
@@ -100,25 +139,25 @@ $(document).ready(function() {
       $("#player1score").prepend(iconP1);
      console.log(iconP1);
     });
+    // submitButtonP1.disabled = true;
+    // submitButtonP1.value = "Player 1 Icon Set";
   });
 
-  $('#submitButtonP2').click( function() {
+  $('#submitButtonP2').one("click",function() {
     $("form#iconP2.playerSelectIcons").submit(function(event) {
       event.preventDefault();
      iconP2 = $('#iconP2 input:checked').val();
      $("#player2score").prepend(iconP2);
     });
+    // submitButtonP2.disabled = true;
+    // submitButtonP2.value = "Player 2 Icon Set";
   });
 
 
-  // $("form#iconP2").submit(function(event) {
-  //   event.preventDefault();
-  //   iconP2 = $('input:checked').val();
-  //   console.log(iconP2);
-  // });
 
   /////Player choses which board to play
   $('#three').click(function() {
+
     var gameDimension = $(this).children('p').data('boardsize');
     presenter.GameState = new GameState(3);
     $('#threeBoard').html(presenter.drawGameBoard());

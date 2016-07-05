@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="375px" height="305px" viewBox="0 0 375 305" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>Player 2 Win Dark Greeen</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="375" height="305" rx="20"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="375" height="305" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Player-2-Win-Dark-Greeen">
+            <g id="NEKO-WON-Copy-2">
+                <use id="Rectangle-23" stroke="#363732" mask="url(#mask-2)" stroke-width="10" fill="#FFFFFC" xlink:href="#path-1"></use>
+                <g id="Play-Again?" transform="translate(3.000000, 175.299003)">
+                    <path d="M2,0 L367,0 C367,0 368.5,121.08804 366,124.127907 C363.5,127.167774 9.99999946,128.687708 3.9999999,124.127907 C-1.99999966,119.568106 2,0 2,0 Z" id="Rectangle-23" fill="#15271B"></path>
+                    <text id="DO-YOU-WANT-TO-PLAY-" font-family="Avenir-Heavy, Avenir" font-size="20" font-weight="600" fill="#FFFFFC">
+                        <tspan x="27.16" y="38.2392027">DO YOU WANT TO PLAY AGAIN?</tspan>
+                    </text>
+                    <rect id="Rectangle-33" fill="#FFFFFC" x="30" y="60.7973422" width="150" height="50.6644518" rx="12"></rect>
+                    <rect id="Rectangle-33-Copy" fill="#FFFFFC" x="199" y="60.7973422" width="150" height="50.6644518" rx="12"></rect>
+                    <text id="NO" font-family="Avenir-Heavy, Avenir" font-size="30" font-weight="600" fill="#15271B">
+                        <tspan x="250.065" y="95.8637874">NO</tspan>
+                    </text>
+                    <text id="YES" font-family="Avenir-Heavy, Avenir" font-size="30" font-weight="600" fill="#15271B">
+                        <tspan x="78.275" y="95.8637874">YES</tspan>
+                    </text>
+                </g>
+                <text id="PLAYER-2-WINS!" fill="#363732" font-family="Avenir-Heavy, Avenir" font-size="40" font-weight="600">
+                    <tspan x="32.34" y="111.049834">PLAYER 2 WINS!</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
