@@ -34,12 +34,19 @@ gamePresenter.prototype.runGame = function() {
         alert("Spot is taken!");
       } else {
         self.mark($(this).index());
-        $(this).html(gs.currentPlayer);
+        if(gs.currentPlayer === "X") {
+          $(this).html(iconP1);
+          console.log(iconP1);
+        } else if (gs.currentPlayer === "O") {
+          $(this).html(iconP2)
+          console.log(iconP2);
+        }
+        // $(this).html(gs.currentPlayer);
         // if(gs.currentPlayer === "X") {
         //   $(this).html("X");
         // } else if(gs.currentPlayer === "O") {
         //   $(this).html(iconP2);
-        } else if(gs.hasCurrentPlayerWon() === true) {
+       if(gs.hasCurrentPlayerWon() === true) {
           alert("You have won");
           var playerXWon = gs.hasPlayerWon("X");
           var playerOWon = gs.hasPlayerWon("O");
@@ -91,26 +98,32 @@ $(document).ready(function() {
   });
 
   ////form for Player Icons
-  // $("#iconsForP1").submit(function(event) {
+  $('#submitButtonP1').click( function() {
+    $("form#iconP1").submit(function(event) {
+      event.preventDefault();
+     iconP1 = $('#iconP1 input:checked').val();
+     console.log(iconP1);
+    });
+  });
+
+  $('#submitButtonP2').click( function() {
+    $("form#iconP2.playerSelectIcons").submit(function(event) {
+      event.preventDefault();
+     iconP2 = $('#iconP2 input:checked').val();
+     console.log(iconP2);
+    });
+  });
+
+
+  // $("form#iconP2").submit(function(event) {
   //   event.preventDefault();
-  //   var icon = $('input:checked').val();
+  //   iconP2 = $('input:checked').val();
+  //   console.log(iconP2);
   // });
 
   /////Player choses which board to play
   $('#three').click(function() {
     var gameDimension = $(this).children('p').data('boardsize');
-    // $("#iconP1").submit(function(event) {
-    //   event.preventDefault();
-    //   iconP1 = $('input:checked').val();
-    // });
-    // $("#iconP2").submit(function(event) {
-    //   event.preventDefault();
-    //   iconP2 = $('input:checked').val();
-    // });
-    // $("#iconsForP2").submit(function(event) {
-    //   event.preventDefault();
-    //   iconP2 = $('input:checked').val();
-    // });
     presenter.GameState = new GameState(3);
     $('#threeBoard').html(presenter.drawGameBoard());
     presenter.runGame();
