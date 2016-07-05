@@ -41,6 +41,8 @@
   .marked
     background lighten(color-ttt-green-1, 30%)
     border-radius 50%
+  .replaceIcon
+    background transparent
 
 #threeBoard
   .box
@@ -90,7 +92,7 @@
 /////////Score Board
 .scoreBoard
   display flex
-  height 75px
+  height 150px
   align-items center
   justify-content center
   .scoreItems
@@ -107,11 +109,16 @@
       .score
         font-size 2em
         margin-top 10px
-
+      img
+        opacity 0.5
+        width 50px
+        height 50px
 
   #player1score
-    background color-ttt-green-2 url('/gfx/vectors/onigiri.svg') no-repeat center
+    background color-ttt-green-2
+
   #player2score
-    background color-ttt-green-3 url('/gfx/vectors/ikura.svg') no-repeat center
+    background color-ttt-green-3
+
   #cat
-    background color-ttt-green-4 url('/gfx/vectors/neko.svg') no-repeat center
+    background color-ttt-green-4

@@ -35,17 +35,12 @@ gamePresenter.prototype.runGame = function() {
       } else {
         self.mark($(this).index());
         if(gs.currentPlayer === "X") {
+          $(this).addClass("replaceIcon");
           $(this).html(iconP1);
-          console.log(iconP1);
         } else if (gs.currentPlayer === "O") {
+          $(this).addClass("replaceIcon");
           $(this).html(iconP2)
-          console.log(iconP2);
         }
-        // $(this).html(gs.currentPlayer);
-        // if(gs.currentPlayer === "X") {
-        //   $(this).html("X");
-        // } else if(gs.currentPlayer === "O") {
-        //   $(this).html(iconP2);
        if(gs.hasCurrentPlayerWon() === true) {
           alert("You have won");
           var playerXWon = gs.hasPlayerWon("X");
@@ -102,6 +97,7 @@ $(document).ready(function() {
     $("form#iconP1").submit(function(event) {
       event.preventDefault();
      iconP1 = $('#iconP1 input:checked').val();
+      $("#player1score").prepend(iconP1);
      console.log(iconP1);
     });
   });
@@ -110,7 +106,7 @@ $(document).ready(function() {
     $("form#iconP2.playerSelectIcons").submit(function(event) {
       event.preventDefault();
      iconP2 = $('#iconP2 input:checked').val();
-     console.log(iconP2);
+     $("#player2score").prepend(iconP2);
     });
   });
 
