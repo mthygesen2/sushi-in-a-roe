@@ -125,16 +125,21 @@
 /* line 16, ../sass/vex-theme-wireframe.sass */
 .vex.vex-theme-wireframe .vex-content {
   font-family: "Helvetica Neue", sans-serif;
-  background: white;
-  color: black;
-  border: 2px solid black;
+  /*background: white;*/
+  color: #15271B;
+  border: 2px solid #15271B;
   padding: 2em;
   position: relative;
   margin: 0 auto;
   max-width: 100%;
-  width: 400px;
+  width: 90vw;
+  height: 50vh;
   font-size: 1.1em;
   line-height: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
 }
 /* line 29, ../sass/vex-theme-wireframe.sass */
 .vex.vex-theme-wireframe .vex-content h1, .vex.vex-theme-wireframe .vex-content h2, .vex.vex-theme-wireframe .vex-content h3, .vex.vex-theme-wireframe .vex-content h4, .vex.vex-theme-wireframe .vex-content h5, .vex.vex-theme-wireframe .vex-content h6, .vex.vex-theme-wireframe .vex-content p, .vex.vex-theme-wireframe .vex-content ul, .vex.vex-theme-wireframe .vex-content li {
@@ -167,7 +172,11 @@
 }
 /* line 56, ../sass/vex-theme-wireframe.sass */
 .vex.vex-theme-wireframe .vex-dialog-form .vex-dialog-message {
-  margin-bottom: 0.5em;
+  margin: 0.5em 0;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 1.2;
 }
 /* line 59, ../sass/vex-theme-wireframe.sass */
 .vex.vex-theme-wireframe .vex-dialog-form .vex-dialog-input {
@@ -193,6 +202,9 @@
 /* line 77, ../sass/vex-theme-wireframe.sass */
 .vex.vex-theme-wireframe .vex-dialog-form .vex-dialog-buttons {
   *zoom: 1;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 /* line 38, ../../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
 .vex.vex-theme-wireframe .vex-dialog-form .vex-dialog-buttons:after {
@@ -244,15 +256,16 @@
 }
 /* line 104, ../sass/vex-theme-wireframe.sass */
 .vex.vex-theme-wireframe .vex-dialog-button.vex-dialog-button-primary {
-  background: black;
+  background: #15271B;
   color: white;
-  border: 2px solid transparent;
+  border: 2px solid white;
+  margin-bottom: 1em;
 }
 /* line 109, ../sass/vex-theme-wireframe.sass */
 .vex.vex-theme-wireframe .vex-dialog-button.vex-dialog-button-secondary {
   background: white;
-  color: black;
-  border: 2px solid black;
+  color: #15271B;
+  border: 2px solid #15271B;
 }
 
 /* line 114, ../sass/vex-theme-wireframe.sass */

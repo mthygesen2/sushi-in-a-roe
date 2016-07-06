@@ -46,7 +46,8 @@ gamePresenter.prototype.runGame = function() {
           var playerOWon = gs.hasPlayerWon("O");
           if(playerXWon === true) {
             vex.dialog.confirm({
-              message: "PLAYER 1 WON!!!!! <br> Do you want to play again?",
+              message: "PLAYER 1 WON!!!",
+              contentClassName: 'p1Won',
               callback: function(value) {
                 if(value === false) {
                   location.reload();
@@ -55,13 +56,18 @@ gamePresenter.prototype.runGame = function() {
                   $('#boardList').show();
                   $('#whichBoard').siblings().hide();
                 }
-              }
+              },
+              buttons: [
+                $.extend({}, vex.dialog.buttons.YES, { text: 'Play Again' }),
+                $.extend({}, vex.dialog.buttons.NO, { text: 'Nope' })
+              ]
             });
             playerXWins += 1;
             $('#numberScoreP1').html(playerXWins);
           } else {
             vex.dialog.confirm({
-              message: "PLAYER 2 WON!!!!! <br> Do you want to play again?",
+              message: "PLAYER 2 WON!!",
+              contentClassName: 'p2Won',
               callback: function(value) {
                 if(value === false) {
                   location.reload();
@@ -71,14 +77,19 @@ gamePresenter.prototype.runGame = function() {
                   $('#whichBoard').siblings().hide();
                   $('.exit span').hide();
                 }
-              }
+              },
+              buttons: [
+                $.extend({}, vex.dialog.buttons.YES, { text: 'Play Again' }),
+                $.extend({}, vex.dialog.buttons.NO, { text: 'Nope' })
+              ]
             });
             playerOWins += 1;
             $('#numberScoreP2').html(playerOWins);
           }
        } else if(gs.isThereATie() === true) {
          vex.dialog.confirm({
-           message: "NEKO ATE YOUR SUSHI! <br> Do you want to play again?",
+           message: "NEKO ATE YOUR SUSHI!",
+           contentClassName: 'nekoWin',
            callback: function(value) {
              if(value === false) {
                location.reload();
@@ -88,7 +99,11 @@ gamePresenter.prototype.runGame = function() {
                $('#whichBoard').siblings().hide();
                $('.exit span').hide();
              }
-           }
+           },
+           buttons: [
+             $.extend({}, vex.dialog.buttons.YES, { text: 'Play Again' }),
+             $.extend({}, vex.dialog.buttons.NO, { text: 'Nope' })
+           ]
          });
             catWins += 1;
             $('#nekoScore').html(catWins);
@@ -154,10 +169,6 @@ $(document).ready(function() {
   $('#whichPlayer #player2 p').click(function() {
     $('#iconsForP2').slideToggle();
 
-  });
-//////Title will take you back to the board page
-  $('#hero .title').click(function() {
-    $('#playerList').show();
   });
 
   ////form for Player Icons sets only one selection of icon

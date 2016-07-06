@@ -298,6 +298,10 @@
 /* line 53, ../sass/vex.sass */
 .vex-dialog-form {
   margin: 0;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
 }
 
 /* line 56, ../sass/vex.sass */

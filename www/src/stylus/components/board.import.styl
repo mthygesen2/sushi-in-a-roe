@@ -122,3 +122,41 @@
 
   #cat
     background color-ttt-green-4
+
+
+.vex-theme-wireframe .vex-content.p1Won,
+.vex-theme-wireframe .vex-content.p2Won,
+.vex-theme-wireframe .vex-content.nekoWin
+  position relative
+
+.vex-theme-wireframe .vex-content.p1Won:before
+  background url('/gfx/vectors/soy.svg') no-repeat center
+  background-size cover
+
+
+.vex-theme-wireframe .vex-content.p2Won:before
+  background url('/gfx/vectors/soy.svg') no-repeat center
+  background-size cover
+
+.vex-theme-wireframe .vex-content.nekoWin:before
+  background url('/gfx/vectors/neko-win.svg') no-repeat center
+  background-size contain
+
+.vex-theme-wireframe .vex-content.nekoWin:before,
+.vex-theme-wireframe .vex-content.p1Won:before,
+.vex-theme-wireframe .vex-content.p2Won:before
+  content ""
+  position absolute
+  width 100%
+  height 100%
+  top 0%
+  left 0%
+  z-index -1
+  animation zoom 2s ease-in-out
+
+@keyframes zoom {
+  0% {  transform: scale(1) }
+  50% {  transform: scale(1.8) }
+  100% {  transform: scale(1) }
+
+}
