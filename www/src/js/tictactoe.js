@@ -143,32 +143,42 @@ $(document).ready(function() {
   });
 
   ////form for Player Icons sets only one selection of icon
-  $('#submitButtonP1').click( function() {
+
     $("form#iconP1").submit(function(event) {
       event.preventDefault();
-     iconP1 = $('#iconP1 input:checked').val();
-      $('#player1score').prepend(iconP1);
-      $('#iconP1 :radio').attr('disabled', true);
-      $('#submitButtonP1').attr('disabled', true);
+      iconP1 = $('#iconP1 input:checked').val();
+      if(iconP1 === iconP2) {
+        vex.dialog.alert({
+          message: "The icon is taken, pick another!"
+        });
+      } else {
+        $('#player1score').prepend(iconP1);
+        $('#iconP1 :radio').attr('disabled', true);
+        $('#submitButtonP1').attr('disabled', true);
+        $('#submitButtonP1').attr('value','set');
+        $('#submitButtonP1').addClass('clicked');
+        showNext();
+      }
     });
-     this.value = "set";
-    $(this).addClass('clicked');
-    console.log($('#submitButtonP1').attr('value'));
-    showNext();
-  });
 
-  $('#submitButtonP2').one("click",function() {
-    $("form#iconP2.playerSelectIcons").submit(function(event) {
-      event.preventDefault();
-     iconP2 = $('#iconP2 input:checked').val();
+
+  $("form#iconP2.playerSelectIcons").submit(function(event) {
+    event.preventDefault();
+   iconP2 = $('#iconP2 input:checked').val();
+   if(iconP2 === iconP1) {
+     vex.dialog.alert({
+       message: "The icon is taken, pick another!"
+    });
+   } else {
      $("#player2score").prepend(iconP2);
      $("#iconP2 :radio").attr('disabled', true);
      $('#submitButtonP2').attr('disabled', true);
-    });
-    this.value = "set";
-   $(this).addClass('clicked');
-    showNext();
+     $('#submitButtonP2').attr('value','set');
+     $('#submitButtonP2').addClass('clicked');
+     showNext();
+    }
   });
+
 
 
 
