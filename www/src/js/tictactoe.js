@@ -69,6 +69,7 @@ gamePresenter.prototype.runGame = function() {
                   $('#whichBoard').show();
                   $('#boardList').show();
                   $('#whichBoard').siblings().hide();
+                  $('.exit span').hide();
                 }
               }
             });
@@ -85,6 +86,7 @@ gamePresenter.prototype.runGame = function() {
                $('#whichBoard').show();
                $('#boardList').show();
                $('#whichBoard').siblings().hide();
+               $('.exit span').hide();
              }
            }
          });
@@ -121,10 +123,26 @@ $(document).ready(function() {
   $('#iconsForP1').hide();
   $('#iconsForP2').hide();
   $('#startGameButton').hide();
+  $('.exit img').hide();
+  $('.exit span').hide();
+
+
+  $('.exit img').click(function(){
+    location.reload();
+  });
+  $('.exit span').click(function(){
+    $('#playerList').hide();
+    $('.exit img').show();
+    $('#whichBoard').show();
+    $('#boardList').show();
+    $('#whichBoard').siblings().hide();
+    $('.exit span').hide();
+  });
 
 ////starts the Game, player can then chose the board size
   $('#startGameButton p').click(function() {
     $('#playerList').hide();
+    $('.exit img').show();
     $('#whichBoard').show();
     $('#boardList').show();
     $('#whichBoard').siblings().hide();
@@ -184,7 +202,6 @@ $(document).ready(function() {
 
   /////Player choses which board to play
   $('#three').click(function() {
-
     var gameDimension = $(this).children('p').data('boardsize');
     presenter.GameState = new GameState(3);
     $('#threeBoard').html(presenter.drawGameBoard());
@@ -192,6 +209,7 @@ $(document).ready(function() {
     $('#threeBoard').show();
     $('#whichBoard').hide();
     $('#score').show();
+    $('.exit span').show();
   });
   $('#four').click(function() {
     var gameDimension = $(this).children('p').data('boardsize');
@@ -201,6 +219,7 @@ $(document).ready(function() {
     $('#whichBoard').hide();
     $('#fourBoard').show();
     $('#score').show();
+    $('.exit span').show();
   });
   $('#five').click(function() {
     var gameDimension = $(this).children('p').data('boardsize');
@@ -210,6 +229,7 @@ $(document).ready(function() {
     $('#whichBoard').hide();
     $('#fiveBoard').show();
     $('#score').show();
+    $('.exit span').show();
   });
 
 
