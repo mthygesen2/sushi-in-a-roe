@@ -102,8 +102,9 @@ var presenter = new gamePresenter(state);
 
 ////Once both players have selected an icon then Next button show
   function showNext() {
-    if('#submitButtonP1'.value === "set" && '#submitButtonP1'.value === "set") {
-      console.log('#submitButtonP1'.value);
+    var p1 = $('#submitButtonP1').attr('value');
+    var p2 = $('#submitButtonP2').attr('value');
+    if(p1 === 'set' &&  p2 === 'set') {
       $('#startGameButton').show();
     }
   }
@@ -151,8 +152,8 @@ $(document).ready(function() {
       $('#submitButtonP1').attr('disabled', true);
     });
      this.value = "set";
-     console.log(this.value);
     $(this).addClass('clicked');
+    console.log($('#submitButtonP1').attr('value'));
     showNext();
   });
 
@@ -161,12 +162,12 @@ $(document).ready(function() {
       event.preventDefault();
      iconP2 = $('#iconP2 input:checked').val();
      $("#player2score").prepend(iconP2);
-     $("#iconP2 :radio").attr("disabled", true);
+     $("#iconP2 :radio").attr('disabled', true);
      $('#submitButtonP2').attr('disabled', true);
     });
     this.value = "set";
    $(this).addClass('clicked');
-   showNext();
+    showNext();
   });
 
 
