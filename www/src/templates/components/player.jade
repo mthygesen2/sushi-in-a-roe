@@ -3,7 +3,7 @@ section.card-panel.feature#playerList
     #whichPlayer
       .title#player1
         p 1 Player
-        form#iconsForP1
+        form#playerVsComputer.playerSelectIcons
           label
                 input(type="radio" name="playerIcon" id="onigiri1" value="<img src='/gfx/vectors/onigiri-1.svg'>")
                 img(src='/gfx/vectors/onigiri-1.svg')
@@ -22,8 +22,8 @@ section.card-panel.feature#playerList
           label
                 input(type="radio" name="playerIcon" id="ebi1"  value="<img src='/gfx/vectors/ebi.svg'>")
                 img(src='/gfx/vectors/ebi.svg')
-          label#submitButton
-                input(type="submit" value="Submit" id="submitFor1Player" class="submit") 
+          label
+                input(type="submit" value="Submit" id="submitButton" class="submit") 
         //- p Computer
         //- form#iconsForComputer
         //-   label

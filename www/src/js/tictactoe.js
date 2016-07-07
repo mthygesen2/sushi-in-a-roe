@@ -113,18 +113,59 @@ gamePresenter.prototype.runGame = function() {
     });
   });
 }
-
+// gamePresenter.prototype.runGame = function() {
+//   var self = this;
+//   var gs = self.GameState;
+//   $('.box').each(function() {
+//       if(gs.currentPlayer === "O") {
+//         function notTaken(element) {
+//           return (element <= 9);
+//         }
+//         var spotsOpen = gs.gameBoard.filter(notTaken);
+//         var randomMark = spotsOpen[Math.floor(Math.random() * spotsOpen.length)];
+//         self.mark($(randomMark).index());
+//         $(randomMark).addClass("replaceIcon");
+//         $(randomMark).html(iconP2);
+//       } else {
+//     $(this).click(function() {
+//       if(gs.isTaken($(this).index()) === true) {
+//         alert("Spot is taken!");
+//       } else {
+//         self.mark($(this).index());
+//         if(gs.currentPlayer === "X") {
+//           $(this).addClass("replaceIcon");
+//           $(this).html(iconP1);
+//         }
+//       }
+//     });
+//   }
+//     gs.changePlayer();
+//   });
+// }
 var state = new GameState(3);
 var presenter = new gamePresenter(state);
 
 ////Once both players have selected an icon then Next button show
-  function showNext() {
-    var p1 = $('#submitButtonP1').attr('value');
-    var p2 = $('#submitButtonP2').attr('value');
-    if(p1 === 'set' &&  p2 === 'set') {
-      $('#startGameButton').show();
-    }
+function showNext() {
+  var p1 = $('#submitButtonP1').attr('value');
+  var p2 = $('#submitButtonP2').attr('value');
+  if(p1 === 'set' &&  p2 === 'set') {
+    $('#startGameButton').show();
   }
+}
+
+//////Will start the compunter AI ///filter array of free spots then do random spot.
+  //
+  // if(gs.currentPlayer === "O") {
+  //   function notTaken(element) {
+  //     return (element <= 9);
+  //   }
+  //   var spotsOpen = gs.GameBoard.filter(notTaken);
+  //   var randomMark = spotsOpen[Math.floor(Math.random() * spotsOpen.length)];
+  //   self.mark($(randomMark).index());
+  //   $(randomMark).addClass("replaceIcon");
+  //   $(randomMark).html(iconP2);
+  // }
 
 $(document).ready(function() {
 ////Hides all boards at the start of game
@@ -162,16 +203,31 @@ $(document).ready(function() {
     $('#boardList').show();
     $('#whichBoard').siblings().hide();
   });
-///Player Icon toggles
+///Player can select their icons, this is for 2 players
   $('#whichPlayer #player1 p').click(function() {
     $('#iconsForP1').slideToggle();
   });
   $('#whichPlayer #player2 p').click(function() {
     $('#iconsForP2').slideToggle();
-
   });
 
-  ////form for Player Icons sets only one selection of icon
+  ////form for Player Icons sets only one selection of icon, for bother 1 player and 2 player
+
+  $("form#playerVsComputer").submit(function(event) {
+    event.preventDefault();
+    iconP1 = $('#playerVsComputer input:checked').val();
+    iconP2 = "<img src='/gfx/vectors/neko-win.svg'>";
+    $('#player1score').prepend(iconP1);
+    $('#player2score').prepend(iconP2);
+    $('#playerList').hide();
+    $('.exit img').show();
+    $('#whichBoard').show();
+    $('#boardList').show();
+    $('#whichBoard').siblings().hide();
+    // $("#player2Score p").text(function () {
+    //   return $('#player2Score p').text().replace('PLAYER 2', 'Computer');
+    // });
+  });
 
     $("form#iconP1").submit(function(event) {
       event.preventDefault();
