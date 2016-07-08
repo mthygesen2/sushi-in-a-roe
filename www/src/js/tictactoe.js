@@ -117,13 +117,13 @@ gamePresenter.prototype.drawGameBoard = function() {
 //     });
 //   });
 // }
+/////Will help filter out taken spots in gameboard for AI
 function notTaken(element) {
   return (element <= 9);
 }
 gamePresenter.prototype.runGame = function() {
   var self = this;
   var gs = self.GameState;
-  /////Game for Player vs Computer at random
   $('.box').each(function() {
     $(this).click(function() {
       if(gs.isTaken($(this).index()) === true) {
@@ -135,6 +135,7 @@ gamePresenter.prototype.runGame = function() {
           $(this).html(iconP1);
           var spotsOpen = gs.gameBoard.filter(notTaken);
           var randomMark = spotsOpen[Math.floor(Math.random() * spotsOpen.length)];
+          gs.currentPlayer = "O";
           gs.gameBoard[randomMark] = "O";
           var x = randomMark + 1;
           $('.box:nth-of-type(' + x + ')').addClass("replaceIcon");
@@ -216,9 +217,10 @@ gamePresenter.prototype.runGame = function() {
           catWins += 1;
           $('#nekoScore').html(catWins);
         }
-        if($('.board').hasClass('playerVSplayer')) {
-          gs.changePlayer();
-        }
+        gs.changePlayer();
+        // if($('.board').hasClass('playerVSplayer')) {
+        //   gs.changePlayer();
+        // }
       }
     });
   });
