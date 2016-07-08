@@ -10,6 +10,13 @@ var GameState = function GameState(gameDimension) {
   }
 };
 
+GameState.prototype.openSpots = function () {
+  var gb = this.gameDimension;
+  return this.gameBoard.filter(function (element) {
+    return element <= gb * gb;
+  });
+};
+
 GameState.prototype.mark = function (index) {
   this.gameBoard[index] = this.currentPlayer;
 };
@@ -20,14 +27,6 @@ GameState.prototype.changePlayer = function () {
     this.currentPlayer = "X";
   }
 };
-
-// GameState.prototype.changePlayer = function() {
-//   if(this.currentPlayer === "<img src='/gfx/vectors/onigiri.svg'>") {
-//     this.currentPlayer = "<img src='/gfx/vectors/ikura.svg'>"
-//   } else {
-//     this.currentPlayer = "<img src='/gfx/vectors/onigiri.svg'>"
-//   }
-// }
 
 //////Validates turns to make sure it is numbers 0-8////////////
 GameState.prototype.validTurn = function (answer) {
