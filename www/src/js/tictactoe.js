@@ -25,23 +25,131 @@ gamePresenter.prototype.drawGameBoard = function() {
   }
   return boardHtml;
 }
+
+
+
+
+// gamePresenter.prototype.runGame = function() {
+//   var self = this;
+//   var gs = self.GameState;
+//   $('.box').each(function() {
+//     $(this).click(function() {
+//       if(gs.isTaken($(this).index()) === true) {
+//         alert("Spot is taken!");
+//       } else {
+//         self.mark($(this).index());
+//         if(gs.currentPlayer === "X") {
+//           $(this).addClass("replaceIcon");
+//           $(this).html(iconP1);
+//         } else if (gs.currentPlayer === "O") {
+//           $(this).addClass("replaceIcon");
+//           $(this).html(iconP2);
+//         }
+//        if(gs.hasCurrentPlayerWon() === true) {
+//           var playerXWon = gs.hasPlayerWon("X");
+//           var playerOWon = gs.hasPlayerWon("O");
+//           if(playerXWon === true) {
+//             vex.dialog.confirm({
+//               message: "PLAYER 1 WON!!!",
+//               contentClassName: 'p1Won',
+//               callback: function(value) {
+//                 if(value === false) {
+//                   location.reload();
+//                 } else {
+//                   $('#whichBoard').show();
+//                   $('#boardList').show();
+//                   $('#whichBoard').siblings().hide();
+//                 }
+//               },
+//               buttons: [
+//                 $.extend({}, vex.dialog.buttons.YES, { text: 'Play Again' }),
+//                 $.extend({}, vex.dialog.buttons.NO, { text: 'Nope' })
+//               ]
+//             });
+//             playerXWins += 1;
+//             $('#numberScoreP1').html(playerXWins);
+//           } else {
+//             vex.dialog.confirm({
+//               message: "PLAYER 2 WON!!",
+//               contentClassName: 'p2Won',
+//               callback: function(value) {
+//                 if(value === false) {
+//                   location.reload();
+//                 } else {
+//                   $('#whichBoard').show();
+//                   $('#boardList').show();
+//                   $('#whichBoard').siblings().hide();
+//                   $('.exit span').hide();
+//                 }
+//               },
+//               buttons: [
+//                 $.extend({}, vex.dialog.buttons.YES, { text: 'Play Again' }),
+//                 $.extend({}, vex.dialog.buttons.NO, { text: 'Nope' })
+//               ]
+//             });
+//             playerOWins += 1;
+//             $('#numberScoreP2').html(playerOWins);
+//           }
+//        } else if(gs.isThereATie() === true) {
+//          vex.dialog.confirm({
+//            message: "NEKO ATE YOUR SUSHI!",
+//            contentClassName: 'nekoWin',
+//            callback: function(value) {
+//              if(value === false) {
+//                location.reload();
+//              } else {
+//                $('#whichBoard').show();
+//                $('#boardList').show();
+//                $('#whichBoard').siblings().hide();
+//                $('.exit span').hide();
+//              }
+//            },
+//            buttons: [
+//              $.extend({}, vex.dialog.buttons.YES, { text: 'Play Again' }),
+//              $.extend({}, vex.dialog.buttons.NO, { text: 'Nope' })
+//            ]
+//          });
+//             catWins += 1;
+//             $('#nekoScore').html(catWins);
+//           }
+//         gs.changePlayer();
+//       }
+//     });
+//   });
+// }
+function notTaken(element) {
+  return (element <= 9);
+}
 gamePresenter.prototype.runGame = function() {
   var self = this;
   var gs = self.GameState;
+  /////Game for Player vs Computer at random
   $('.box').each(function() {
     $(this).click(function() {
       if(gs.isTaken($(this).index()) === true) {
         alert("Spot is taken!");
       } else {
-        self.mark($(this).index());
-        if(gs.currentPlayer === "X") {
+        if($('.board').hasClass('computer')) {
+          self.mark($(this).index());
           $(this).addClass("replaceIcon");
           $(this).html(iconP1);
-        } else if (gs.currentPlayer === "O") {
-          $(this).addClass("replaceIcon");
-          $(this).html(iconP2);
+          var spotsOpen = gs.gameBoard.filter(notTaken);
+          var randomMark = spotsOpen[Math.floor(Math.random() * spotsOpen.length)];
+          gs.gameBoard[randomMark] = "O";
+          var x = randomMark + 1;
+          $('.box:nth-of-type(' + x + ')').addClass("replaceIcon");
+          $('.box:nth-of-type(' + x + ')').html(iconP2);
+        } else if($('.board').hasClass('playerVSplayer')) {
+          self.mark($(this).index());
+           if(gs.currentPlayer === "X") {
+             $(this).addClass("replaceIcon");
+             $(this).html(iconP1);
+           } else if (gs.currentPlayer === "O") {
+             $(this).addClass("replaceIcon");
+             $(this).html(iconP2);
+           }
         }
-       if(gs.hasCurrentPlayerWon() === true) {
+        if(gs.hasCurrentPlayerWon() === true) {
           var playerXWon = gs.hasPlayerWon("X");
           var playerOWon = gs.hasPlayerWon("O");
           if(playerXWon === true) {
@@ -105,43 +213,17 @@ gamePresenter.prototype.runGame = function() {
              $.extend({}, vex.dialog.buttons.NO, { text: 'Nope' })
            ]
          });
-            catWins += 1;
-            $('#nekoScore').html(catWins);
-          }
-        gs.changePlayer();
+          catWins += 1;
+          $('#nekoScore').html(catWins);
+        }
+        if($('.board').hasClass('playerVSplayer')) {
+          gs.changePlayer();
+        }
       }
     });
   });
 }
-// gamePresenter.prototype.runGame = function() {
-//   var self = this;
-//   var gs = self.GameState;
-//   $('.box').each(function() {
-//       if(gs.currentPlayer === "O") {
-//         function notTaken(element) {
-//           return (element <= 9);
-//         }
-//         var spotsOpen = gs.gameBoard.filter(notTaken);
-//         var randomMark = spotsOpen[Math.floor(Math.random() * spotsOpen.length)];
-//         self.mark($(randomMark).index());
-//         $(randomMark).addClass("replaceIcon");
-//         $(randomMark).html(iconP2);
-//       } else {
-//     $(this).click(function() {
-//       if(gs.isTaken($(this).index()) === true) {
-//         alert("Spot is taken!");
-//       } else {
-//         self.mark($(this).index());
-//         if(gs.currentPlayer === "X") {
-//           $(this).addClass("replaceIcon");
-//           $(this).html(iconP1);
-//         }
-//       }
-//     });
-//   }
-//     gs.changePlayer();
-//   });
-// }
+
 var state = new GameState(3);
 var presenter = new gamePresenter(state);
 
@@ -202,10 +284,11 @@ $(document).ready(function() {
     $('#whichBoard').show();
     $('#boardList').show();
     $('#whichBoard').siblings().hide();
+    $('.board').addClass('playerVSplayer');
   });
 ///Player can select their icons, this is for 2 players
   $('#whichPlayer #player1 p').click(function() {
-    $('#iconsForP1').slideToggle();
+    $('#playerVsComputer').slideToggle();
   });
   $('#whichPlayer #player2 p').click(function() {
     $('#iconsForP2').slideToggle();
@@ -224,6 +307,7 @@ $(document).ready(function() {
     $('#whichBoard').show();
     $('#boardList').show();
     $('#whichBoard').siblings().hide();
+    $('.board').addClass('computer');
     // $("#player2Score p").text(function () {
     //   return $('#player2Score p').text().replace('PLAYER 2', 'Computer');
     // });
