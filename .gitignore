@@ -1,9 +1,4 @@
 .idea
 node_modules
 .DS_Store
-/css
-/js
-/*.html
 *.log
-/source-maps
-/style-guide
