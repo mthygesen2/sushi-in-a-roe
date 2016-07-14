@@ -1,8 +1,9 @@
 .idea
 node_modules
 .DS_Store
-static/css
-static/js
-static/**/*.html
+css
+js
+*.html
 *.log
 source-maps
+style-guide
