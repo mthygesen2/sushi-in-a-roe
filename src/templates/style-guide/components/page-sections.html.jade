@@ -1,0 +1,37 @@
+extend ../../style-guide.html
+
+block vars
+  - var bodyClass = 'style-guide page-sections';
+
+block sub_content
+  header#header
+    h1 Page Sections
+    p The page-section component is typically defined as a <code>section</code> element with a class of <code>.page-section</code>. Page sections can contain a multitude of other elements, but they mainly style these three types of children elements:
+    ul
+      li <code>&#60;h2&#62;</code>
+      li <code>&#60;h3&#62;</code>
+      li <code>&#60;p&#62;</code>
+
+  .example
+    section.page-section.white
+      h2 Example 1
+      h3 Page section with a subtitle. Notice the element above contains an underscore.
+      p This text here would be some description text that supplements the heading and subtitle. Typically you'll place a paragraph here and have three balanced sentences. Be sure to check out the different variants of page sections below.
+
+  .example
+    section.page-section.red.lighten-5
+      h2 Example 2
+      p To add a background color to a page section, simply add a color class defined in the available color palette to the element. Also, any of these children elements for page sections are optional. Notice how this page section doesn't contain a subtitle.
+
+  .example
+    section.page-section.white
+      h2 Example 3
+      p This is a page section that also contains a feature. Page sections are great because they can contain any number of elements.
+      .feature.gfx-top
+        .wrapper
+          .gfx
+            img(src='/gfx/vectors/software-development.svg')
+          .description
+            h2.title
+              | Sample Feature <code>.gfx-top</code>
+            p This feature shows the graphic above and the description below. This is one of four ways a feature can be displayed. With <code>.gfx-top</code> and <code>.gfx-bottom</code> the graphic is styled to be 50% the width of its parent and have auto margins left and right.

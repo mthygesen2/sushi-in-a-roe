@@ -1,0 +1,42 @@
+//-- The hero card on the landing page -----------------------------------------
+#hero
+  margin 1em 0
+  overflow hidden
+  text-align center
+
+  .wrapper
+    margin 0 auto
+    max-width 800px
+    background-color white
+
+  .exit
+    display flex
+    justify-content space-between
+    align-content center
+    margin 2em 2em 1em 2em
+    img, span
+      background-color white
+      padding 5px
+      color color-ttt-green-3
+      height 50px
+    img
+      width 50px
+    span
+      padding 15px
+
+  .title
+    margin-bottom 2em
+
+    h1
+      color color-ttt-green-1
+      display inline-block
+      font-size 2.8em
+      font-weight bold
+      margin 0
+      text-transform uppercase
+
+      +below('l')
+        font-size 2em
+
+      +below('s')
+        font-size 1.4em

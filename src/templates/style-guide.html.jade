@@ -1,0 +1,69 @@
+extend template-wrapper
+block vars
+  - var bodyClass = 'style-guide';
+
+block append title
+  | - Style Guide
+
+block content
+  include components/nav-bar
+
+  .wrapper-fluid
+    menu#sidebar
+      .list-group
+        a.list-group-item(href='/style-guide.html') Style Guide
+      h3 Essentials
+      .list-group
+        a.list-group-item(href='/style-guide/essentials/grid.html') Grid
+        a.list-group-item(href='/style-guide/essentials/color-palette.html') Color Palette
+        a.list-group-item(href='/style-guide/essentials/typography.html') Typography
+        a.list-group-item(href='/style-guide/essentials/icons.html') Icons
+        a.list-group-item(href='/style-guide/essentials/tables.html') Tables
+        a.list-group-item(href='/style-guide/essentials/buttons.html') Buttons
+        a.list-group-item(href='/style-guide/essentials/list-groups.html') List Groups
+        a.list-group-item(href='/style-guide/essentials/forms.html') Forms
+        a.list-group-item(href='/style-guide/essentials/inputs.html') Inputs
+        a.list-group-item(href='/style-guide/essentials/enhanced-inputs.html') Enhanced Inputs
+
+      h3 Components
+      .list-group
+        a.list-group-item(href='/style-guide/components/cards.html') Cards
+        a.list-group-item(href='/style-guide/components/features.html') Features
+        a.list-group-item(href='/style-guide/components/hero.html') Hero
+        a.list-group-item(href='/style-guide/components/nav-bar.html') Nav Bars
+        a.list-group-item(href='/style-guide/components/page-sections.html') Page Sections
+        a.list-group-item(href='/style-guide/components/footer.html') Footer
+
+    #page
+      block sub_content
+        h1 The Style Guide
+        .card-panel
+          .feature.gfx-top
+            .gfx
+              img(src="/gfx/vectors/turtle.svg")
+            .description
+              p This section contains a preview of all the initial essential elements and components that come bundled with the interface starter package. This elements are designed to be modified by the designer in order to create whatever look, feel, and functionality is desired. It is up to the developer to decide if they want to keep this section up-to-date as more components are added to the interface.
+              p This interface is broken up into two primary categories to get a developer started:
+          .clearfix
+            .col-one-half
+              h2 Essentials
+              p These are elements and frameworks that provide a foundation for styling in any interface. Things like the grid, color palette, typography, icons, and other core items that are essential to the frontend. Bits and pieces of various frameworks have been combined to encompass the essentials bundle provided by this starter package.
+            .col-one-half
+              h2 Components
+              p Typically comprised of essentials, components provide more of the structure to the site. This is where a lot of new content will be created by developers depending on the application. In this interface, several core components have been provided as a starting point and to provide structure to this interface itself.
+          h2
+            i.fa.fa-folder-open
+            | Folder Structure
+          p The project is broken into <code>src/</code> and <code>static</code> directories. <code>src/</code> contains all stylus and template files while <code>static/</code> contains all gfx, fonts, vendor resources, and js files. Currently the js for the site is in the <code>static/</code> directory since no solid JS framework is part of this tutorial.
+          .clearfix
+            .col-one-half
+              h3 Stylus
+              p All of the stylus files are located in <code>src/stylus</code>.
+              p This directory contains all the styling for the entire interface. The <code>main.styl</code> file is the primary file that includes every file with a <code>.import.styl</code> extension. The Gulpfile.js will exclude any files with <code>.import</code> from being compiled to plain css.
+
+            .col-one-half
+              h3 Pug (Jade)
+              p All of the pug files are located in <code>src/templates</code>.
+              p This directory contains the template files for the landing page and Style Guide pages. More files will be added here as additional pages are created for the interface. Be sure to checkout <code>server.js</code> to learn how a route such as <code>/</code> or <code>/style-guide</code> renders a template file.
+
+  include components/footer

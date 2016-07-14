@@ -1,0 +1,214 @@
+//-- Forms ---------------------------------------------------------------------
+// Based on Bootstrap v3.3.6 (http://getbootstrap.com)
+//
+// Textual form controls
+//
+.form-control
+  background-color #fff
+  background-image none
+  border 1px solid input-border-color
+  border-radius input-border-radius
+  box-shadow input-box-shadow
+  color color-text-main
+  display block
+  padding input-padding-y input-padding-x
+  transition border-color ease-in-out .15s
+  width 100%
+
+  form-control-focus()
+
+  &::-webkit-input-placeholder
+    color input-color-placeholder
+    font-size 90%
+    opacity 1
+    padding-left 0.15rem
+
+  &:disabled,
+  &[readonly]
+    background-color input-bg-disabled
+    opacity 1
+
+  &:disabled
+    cursor not-allowed
+
+// Form groups
+.form-group
+  margin-bottom form-group-margin-bottom
+
+  label
+    display inline-block
+    margin-bottom form-group-label-margin-bottom
+
+// Checkboxes and radios
+// Indent the labels to position radios/checkboxes as hanging controls.
+.radio,
+.checkbox
+  display block
+  position relative
+  margin 0.5rem 0
+
+  label
+    cursor pointer
+    display inline-block
+    font-weight normal
+    margin-bottom 0
+    padding-left 1.25rem
+
+    // When there's no labels, don't position the input.
+    input:only-child
+      position: static
+
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"]
+  margin-top .25rem
+  margin-left -1.25rem
+  position absolute
+
+.radio + .radio,
+.checkbox + .checkbox
+  // Move up sibling radios or checkboxes for tighter spacing
+  margin-top -.25rem
+
+// Radios and checkboxes on same line
+.radio-inline,
+.checkbox-inline
+  cursor pointer
+  display inline-block
+  font-weight normal
+  position relative
+  padding-left 1.25rem
+  margin-bottom 0
+  vertical-align middle
+
+.radio-inline + .radio-inline,
+.checkbox-inline + .checkbox-inline
+  margin-top 0
+  margin-left .75rem
+
+// Apply same disabled cursor tweak as for inputs
+// Some special care is needed because <label>s don't inherit their parent's `cursor`.
+//
+// Note: Neither radios nor checkboxes can be readonly.
+input[type="radio"],
+input[type="checkbox"]
+  &:disabled,
+  &.disabled
+    cursor not-allowed
+
+// These classes are used directly on <label>s
+.radio-inline,
+.checkbox-inline
+  &.disabled
+    cursor not-allowed
+
+// These classes are used on elements with <label> descendants
+.radio,
+.checkbox
+  &.disabled
+    label
+      cursor not-allowed
+
+// Make file inputs better match text inputs by forcing them to new lines.
+.form-control-file,
+.form-control-range
+  display block
+
+// For use with horizontal and inline forms, when you need the label text to
+// align with the form controls.
+.form-control-label {
+  margin-bottom 0 // Override the `<label>` default
+  padding input-padding-y input-padding-x;
+}
+
+// Static form control text
+//
+// Apply class to an element to make any string of text align with labels in a
+// horizontal form layout.
+
+.form-control-static
+  // Size it appropriately next to real form controls
+  padding-top input-padding-y
+  padding-bottom input-padding-y
+  // Remove default margin from `p`
+  margin-bottom 0
+
+//-- Inline webform ------------------------------------------------------------
+.form-inline
+  // Kick in the inline
+  +above('m')
+    // Inline-block all the things for "inline"
+    .form-group
+      display inline-block
+      margin-bottom 0
+      vertical-align middle
+
+      label
+        margin-right 0.25rem
+
+    // Allow folks to *not* use `.form-group`
+    .form-control
+      display inline-block
+      margin-right 0.25rem
+      width auto
+      // Prevent labels from stacking above inputs in `.form-group`
+      vertical-align middle
+
+    // Make static controls behave like regular ones
+    .form-control-static
+      display inline-block
+
+    .input-group
+      display inline-table
+      vertical-align middle
+
+      .input-group-addon,
+      .input-group-btn,
+      .form-control
+        width auto
+
+    // Input groups need that 100% width though
+    .input-group > .form-control
+      width 100%
+
+    .form-control-label
+      margin-bottom 0
+      vertical-align middle
+
+    // Remove default margin on radios/checkboxes that were used for stacking, and
+    // then undo the floating of radios and checkboxes to match.
+    .radio,
+    .checkbox
+      display inline-block
+      margin-top 0
+      margin-bottom 0
+      vertical-align middle
+
+      label
+        padding-left 0
+
+    .radio input[type="radio"],
+    .checkbox input[type="checkbox"]
+      margin-top 0
+      margin-right 0.25rem
+      margin-left 0
+      position relative
+
+    // Re-override the feedback icon.
+    .has-feedback .form-control-feedback
+      top 0
+
+//-- Horizontal form -----------------------------------------------------------
+.form-horizontal
+  .form-group
+    clearfix()
+
+  .control-label
+    col(1/6, cycle: 2)
+
+  .input
+    col(5/6, cycle: 2)
+
+  .input-pull-right
+    col(5/6, cycle: 2, offset: 1/6)

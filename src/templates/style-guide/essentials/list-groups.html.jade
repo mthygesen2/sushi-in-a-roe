@@ -1,0 +1,105 @@
+extend ../../style-guide.html
+
+block vars
+  - var bodyClass = 'style-guide list-groups';
+
+block sub_content
+  header#header
+    h1 List Groups
+    p This page depicts the way list groups can be displayed on this website.
+
+  section.card
+    .card-content
+      h2.card-title= 'Basic List Groups'
+      p The most basic list group is an unordered list with list items:
+      .example
+        ul.list-group
+          li.list-group-item First item
+          li.list-group-item Second item
+          li.list-group-item Third item
+      p To create a basic list group, use an <code>&#60;ul&#62;</code> element with class <code>.list-group</code>, and <code>&#60;li&#62;</code> elements with class <code>.list-group-item</code>.
+
+  section.card
+    .card-content
+      h2.card-title= 'List Group with Badges'
+      p You can also add badges to a list group. The badges will automatically be positioned on the right:
+      .example
+        ul.list-group
+          li.list-group-item
+            span.badge 12
+            | Boats
+          li.list-group-item
+            span.badge 2
+            | Trains
+          li.list-group-item
+            span.badge 10
+            | Planes
+      p To create a list group with a badge, add a <code>&#60;span&#62;</code> element with class <code>.badge</code>, inside the <code>.list-group-item</code> element.
+
+  section.card
+    .card-content
+      h2.card-title= 'List Group with Linked Items'
+      p The items in a list group can also be hyperlinks. This will add a grey background color on hover:
+      .example
+        .list-group
+          a.list-group-item(href='#')
+            span.badge 12
+            | Boats
+          a.list-group-item(href='#')
+            span.badge 2
+            | Trains
+          a.list-group-item(href='#')
+            span.badge 10
+            | Planes
+      p To create a list group with linked items, use a <code>&#60;div&#62;</code> element with a class of <code>.list-group</code> instead of a <code>&#60;ul&#62;</code> element. The use <code>&#60;a&#62;</code> elements with classes of <code>.list-group-item</code> instead of <code>&#60;li&#62;</code>.
+
+  section.card
+    .card-content
+      h2.card-title= 'Active State'
+      p Use the <code>.active</code> class to highlight the current item:
+      .example
+        .list-group
+          a.list-group-item.active(href='#')
+            span.badge 12
+            | Boats
+          a.list-group-item(href='#')
+            span.badge 2
+            | Trains
+          a.list-group-item(href='#')
+            span.badge 10
+            | Planes
+
+  section.card
+    .card-content
+      h2.card-title= 'Disabled Item'
+      p Use the <code>.disabled</code> class to disable an item in the list:
+      .example
+        .list-group
+          a.list-group-item.disabled(href='#')
+            span.badge 12
+            | Boats
+          a.list-group-item(href='#')
+            span.badge 2
+            | Trains
+          a.list-group-item(href='#')
+            span.badge 10
+            | Planes
+
+  section.card
+    .card-content
+      h2.card-title= 'Contextual Classes'
+      p The classes for coloring list-items are: <code>.list-group-item-success</code>, <code>.list-group-item-info</code>, <code>.list-group-item-warning</code>, and <code>.list-group-item-danger</code>:
+      .example
+        .list-group
+          a.list-group-item.list-group-item-success(href='#')
+            span.badge $1.9 M
+            | Real Estate and Properties
+          a.list-group-item.list-group-item-info(href='#')
+            span.badge $873k
+            | Land Vehicles
+          a.list-group-item.list-group-item-warning(href='#')
+            span.badge $31k
+            | Sea Vehicles
+          a.list-group-item.list-group-item-danger(href='#')
+            span.badge -$128k
+            | Aircraft and Helicopters

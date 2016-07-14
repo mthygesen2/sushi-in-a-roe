@@ -1,0 +1,124 @@
+extend ../../style-guide.html
+
+block vars
+  - var bodyClass = 'style-guide typography';
+
+block sub_content
+  header#header
+    h1 Typography
+    p This page depicts all typographical elements for use in this website.
+
+  section.card
+    .card-content
+      h2.card-title= '<h1> - <h6>'
+      p HTML headings (<code>&#60;h1&#62;</code> to <code>&#60;h6&#62;</code>) are styled in the following way:
+      .example
+        h1 h1 Heading 1
+        h2 h2 Heading 2
+        h3 h3 Heading 3
+        h4 h4 Heading 4
+        h5 h5 Heading 5
+        h6 h6 Heading 6
+
+  section.card
+    .card-content
+      h2.card-title= '<small>'
+      p The HTML <code>&#60;small&#62;</code> element is used to create a lighter, secondary text in any heading:
+      .example
+        h1 h1 Heading 1 <small>secondary text</small>
+        h2 h2 Heading 2 <small>secondary text</small>
+        h3 h3 Heading 3 <small>secondary text</small>
+        h4 h4 Heading 4 <small>secondary text</small>
+        h5 h5 Heading 5 <small>secondary text</small>
+        h6 h6 Heading 6 <small>secondary text</small>
+
+  section.card
+    .card-content
+      h2.card-title= '<p>'
+      p Paragraphs (<code>&#60;p&#62;</code>) are styled in the following way:
+      .example
+        p There is perhaps no better a demonstration of the folly of human conceits than this distant image of our tiny world.
+
+  section.card
+    .card-content
+      h2.card-title= '<ul>, <ol>, <li>'
+      p Unordered (<code>&#60;ul&#62;</code>) and ordered (<code>&#60;ol&#62;</code>) lists are styled in the following way:
+      .example
+        ul
+          li Item 1
+          li Item 2
+          li Item 3
+          li Item 4
+
+      .example
+        ol
+          li Justin Beans
+          li Alexander Hamilton
+          li Jerry Fettes
+          li Hubert Humphery
+
+  section.card
+    .card-content
+      h2.card-title= '<mark>'
+      p The HTML <code>&#60;mark&#62;</code> element will style text in the following way:
+      .example
+        p Use the mark element to <mark>highlight</mark> text.
+
+  section.card
+    .card-content
+      h2.card-title= '<abbr>'
+      p The HTML <code>&#60;abbr&#62;</code> element for abbreviation will style text in the following way:
+      .example
+        p The <abbr title='World Wildlife Federation'>WWF</abbr> sued the <abbr title='World Wrestling Federation'>WWF</abbr> for trademark infringement, forcing the <abbr title='World Wrestling Federation'>WWF</abbr> to be renamed to the <abbr title='World Wrestling Entertainment'>WWE</abbr>.
+
+  section.card
+    .card-content
+      h2.card-title= '<blockquote>'
+      p The HTML <code>&#60;blockquote&#62;</code> element will style text in the following way:
+      .example
+        blockquote
+          p <code>&#60;p&#62;</code> The Saturn V rocket’s first stage carries 203,400 gallons (770,000 liters) of kerosene fuel and 318,000 gallons (1.2 million liters) of liquid oxygen needed for combustion. At liftoff, the stage’s five F-1 rocket engines ignite and produce 7.5 million pounds of thrust.
+          footer <code>&#60;footer&#62;</code> - See more at: <a href='http://www.space.com/18422-apollo-saturn-v-moon-rocket-nasa-infographic.html#sthash.jOnyWDA7.dpuf' target='_blank'>www.space.com</a>
+
+      p To show the quote on the right, use the <code>.blockquote-reverse</code> class:
+      .example
+        blockquote.blockquote-reverse
+          p <code>&#60;p&#62;</code> The Saturn V rocket’s first stage carries 203,400 gallons (770,000 liters) of kerosene fuel and 318,000 gallons (1.2 million liters) of liquid oxygen needed for combustion. At liftoff, the stage’s five F-1 rocket engines ignite and produce 7.5 million pounds of thrust.
+          footer <code>&#60;footer&#62;</code> See more at: <a href='http://www.space.com/18422-apollo-saturn-v-moon-rocket-nasa-infographic.html#sthash.jOnyWDA7.dpuf' target='_blank'>www.space.com</a>
+
+  section.card
+    .card-content
+      h2.card-title= '<dl>'
+      p The HTML <code>&#60;dl&#62;</code> element for description list will style text in the following way:
+      .example
+        dl
+          dt <code>&#60;dt&#62;</code> Computer
+          dd <code>&#60;dd&#62;</code> A device for digital activities
+          dt <code>&#60;dt&#62;</code> Phone
+          dd <code>&#60;dd&#62;</code> A device for speaking to people who are not nearby
+
+  section.card
+    .card-content
+      h2.card-title= '<code>'
+      p The HTML <code>&#60;code&#62;</code> element will style text in the following way:
+      .example
+        p The following HTML elements: <code>span</code>, <code>section</code>, and <code>div</code> defines a section in a document.
+
+  section.card
+    .card-content
+      h2.card-title= '<kbd>'
+      p The HTML <code>&#60;kbd&#62;</code> element will style text in the following way:
+      .example
+        p Use <kbd>CMD + p</kbd> to open the Print dialog box.
+
+  section.card
+    .card-content
+      h2.card-title= '<pre>'
+      p The HTML <code>&#60;pre&#62;</code> element will style text in the following way:
+      .example
+        pre
+          | Text in a pre element
+          | is displayed in a fixed-width
+          | font, and it preserves
+          | both      spaces and
+          | line breaks.

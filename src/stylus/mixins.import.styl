@@ -1,0 +1,105 @@
+// Ensure that your edges stick to your parent's edges
+stick-to-parents-edges()
+  edge-offsets 0, 0, 0, 0
+
+// Offset your edges from your parent's edges by some amount
+edge-offsets(top, right, bottom, left)
+  bottom bottom
+  left left
+  right right
+  top top
+
+//-- Better clearfix -----------------------------------------------------------
+clearfix()
+  zoom 1
+  &:after
+  &:before
+    content ""
+    display table
+  &:after
+    clear both
+
+// Disable the selection of text
+no-select()
+  cursor default
+  -webkit-touch-callout none
+  -webkit-user-select none
+  -khtml-user-select none
+  -moz-user-select none
+  -ms-user-select none
+  user-select none
+
+vendor-prefix(prop, args)
+  -webkit-{prop} args
+  -moz-{prop} args
+  -ms-{prop} args
+  -o-{prop} args
+  {prop} args
+
+flex-center()
+  align-items center
+  display flex
+  justify-content center
+
+// Border radius mixin
+border-top-radius(radius)
+  border-top-right-radius radius
+  border-top-left-radius radius
+
+border-right-radius(radius)
+  border-bottom-right-radius radius
+  border-top-right-radius radius
+
+border-bottom-radius(radius)
+  border-bottom-right-radius radius
+  border-bottom-left-radius radius
+
+border-left-radius(radius)
+  border-bottom-left-radius radius
+  border-top-left-radius radius
+
+// Better mobile landscape mixin
+mobile-landscape()
+  @media only screen and (max-width: 773px) and (min-width: 568px) and (orientation: landscape)
+    {block}
+
+//-- Form mixins ---------------------------------------------------------------
+form-control-focus()
+  &:focus
+    border-color input-border-focus
+    box-shadow input-box-shadow, input-box-shadow-focus
+    outline none
+
+//-- Label mixins --------------------------------------------------------------
+label-variant(color)
+  background-color color
+
+  &[href]
+    &:hover,
+    &:focus
+      background-color darken(color, 10%)
+
+//-- List Group mixins ---------------------------------------------------------
+list-group-item-variant(state, background, color)
+  .list-group-item-{state}
+    background-color background
+    color color
+
+  a.list-group-item-{state},
+  button.list-group-item-{state}
+    color color
+
+    .list-group-item-heading
+      color inherit
+
+    &:hover,
+    &:focus
+      background-color darken(background, 5%)
+      color color
+
+    &.active,
+    &.active:hover,
+    &.active:focus
+      background-color color
+      border-color color
+      color white

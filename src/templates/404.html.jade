@@ -1,0 +1,20 @@
+extend template-wrapper
+block vars
+  - var bodyClass = 'four-oh-four'
+
+prepend title
+  | 404 Elephant -
+
+block content
+  include components/nav-bar
+
+  section#intro.feature.gfx-bottom
+    .wrapper
+      .description
+        h1.title
+          | Oops! We couldn't find this page!
+        p The url you entered doesn't exist. Please check your path and try again. Say hi to Sam in the meantime.
+      .gfx
+        img(src='/gfx/vectors/404-elephant.svg')
+
+  include components/footer

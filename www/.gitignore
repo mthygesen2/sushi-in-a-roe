@@ -1,8 +1,0 @@
-.idea
-node_modules
-.DS_Store
-static/css/*.css*
-static/js/*.js*
-static/**/*.html
-*.log
-source-maps

@@ -1,0 +1,61 @@
+extend ../../style-guide.html
+
+block vars
+  - var bodyClass = 'style-guide grid';
+
+block sub_content
+  header#header
+    h1 The Grid
+    p The foundation of any well formed site is a grid system. The implementation here is using <a href="http://jeet.gs/" target="_blank">Jeet</a>, a grid system for human. Jeet is available anywhere in stylus and here are some examples of the things you can do with Jeet.
+
+    .example.clearfix
+      .col-one-third
+        .feature.gfx-top.white
+          .wrapper
+            .gfx
+              img(src='/gfx/vectors/software-development.svg')
+            .description
+              h2.title
+                | Flexibility
+              p Jeet is built on CSS preprocessors. As such, you're no longer limited to classes like <code>.col-6</code>. Instead, you can pass any fraction, decimal, or combination of the two, to create a completely custom grid.
+
+      .col-one-third
+        .feature.gfx-top.white
+          .wrapper
+            .gfx
+              img(src='/gfx/vectors/international-exports.svg')
+            .description
+              h2.title
+                | Helper Classes
+              p Jeet has been extended here to include helper classes that can be added to DOM elements. Elements can be given a fixed column width and cycle by using the following classes: <code>.col-one-half</code>, <code>.col-one-third</code>, <code>.col-one-fourth</code>, <code>.col-one-fifth</code>, etc. onto 12 columns.
+
+      .col-one-third
+        .feature.gfx-top.white
+          .wrapper
+            .gfx
+              img(src='/gfx/vectors/ecommerce-fulfillment.svg')
+            .description
+              h2.title
+                | Stylus Mixins
+              p Be sure to use Jeet's mixins in elements when you can. <code>col(ratios: 1, offset: 0, cycle: 0, uncycle: 0, gutter: jeet-gutter)</code>. Again, this mixin is available anywhere you can write stylus.
+
+      .example.clearfix
+        .col-one-half
+          .feature.gfx-top.white
+            .wrapper
+              .gfx
+                img(src='/gfx/vectors/website-hosting-management.svg')
+              .description
+                h2.title
+                  | Tips
+                p It's a good idea to wrap your columns in an element that is self cleared. This is accomplished by adding a DOM element with the class of <code>.clearfix</code> around your columns or extending the <code>clearfix()</code> mixin directly on your element containing the columns.
+
+        .col-one-half
+          .feature.gfx-bottom.white
+            .wrapper
+              .description
+                h2.title
+                  | More Documentation
+                p Be sure to read the <a href="http://jeet.gs/" target="_blank">documentation</a> about Jeet to learn more about this grid system.
+              .gfx
+                img(src='/gfx/vectors/international-exports.svg')

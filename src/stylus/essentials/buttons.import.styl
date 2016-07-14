@@ -1,0 +1,74 @@
+//-- The buttons that are displayed around the site. ---------------------------
+.btn
+  border-radius 2em
+  border-style solid
+  border-width 2px
+  display inline-block
+  margin 0 0.15em
+  padding 0.5em 1em
+  text-transform uppercase
+  transition all 0.25s ease-in-out
+
+  &:hover, &:active
+    cursor pointer
+
+  &.default
+    background-color color-btn-default
+    border-color grey-lighten-2
+    color color-text-main
+
+    &:hover, &:active
+      background-color darken(color-btn-default, 20%)
+
+  &.primary
+    background-color color-btn-primary
+    color white
+
+    &:hover, &:active
+      background-color color-btn-default
+      border-color color-btn-primary
+      color color-btn-primary
+
+  &.success
+    background-color color-btn-success
+    color white
+
+    &:hover, &:active
+      background-color color-btn-default
+      border-color color-btn-success
+      color color-btn-success
+
+  &.info
+    background-color color-btn-info
+    color white
+
+    &:hover, &:active
+      background-color color-btn-default
+      border-color color-btn-info
+      color color-btn-info
+
+  &.warning
+    background-color color-btn-warning
+    color white
+
+    &:hover, &:active
+      background-color color-btn-default
+      border-color color-btn-warning
+      color color-btn-warning
+
+  &.danger
+    background-color color-btn-danger
+    color white
+
+    &:hover, &:active
+      background-color color-btn-default
+      border-color color-btn-danger
+      color color-btn-danger
+
+  &.link
+    border-color transparent
+    background-color color-btn-link
+    color color-text-main
+
+    &:hover, &:active
+      text-decoration underline

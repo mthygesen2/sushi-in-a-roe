@@ -1,0 +1,45 @@
+extend ../../style-guide.html
+
+block vars
+  - var bodyClass = 'style-guide nav-bar';
+
+block sub_content
+  header#header
+    h1 Navigation Bars
+    p The navigation bar component is typically defined as a <code>nav</code> element with a class of <code>.navbar</code> and a variant class such as <code>.navbar-default</code> or <code>.navbar-inverse</code>.
+
+  .example
+    nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          a.navbar-brand Mash
+        ul.nav.navbar-nav
+          li.active: a(href="/") Home
+          li: a(href="/") Payments
+          li: a(href="/") Test
+          li: a(href="/") Test 2
+
+  .example
+    nav.navbar.navbar-inverse
+      .container-fluid
+        .navbar-header
+          a.navbar-brand Mash
+        ul.nav.navbar-nav
+          li.active: a(href="/") Home
+          li: a(href="/") Payments
+          li: a(href="/") Test
+          li: a(href="/") Test 2
+
+  .example
+    nav.navbar.navbar-inverse
+      .container-fluid
+        .navbar-header
+          a.navbar-brand Mash
+        ul.nav.navbar-nav
+          li.active: a(href="/") Home
+          li: a(href="/") Payments
+          li: a(href="/") Test
+          li: a(href="/") Test 2
+        ul.nav.navbar-nav.navbar-right
+          li: a(href="/") Test
+          li: a(href="/") Test 2

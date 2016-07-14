@@ -1,0 +1,37 @@
+//-- The page-section component ------------------------------------------------
+.page-section
+  padding 2em
+
+  > h2
+    font-weight noremal
+    margin 0
+    text-align center
+    text-transform uppercase
+
+    &:after
+      border-top-width 2px
+      border-bottom-width 1px
+      border-color color-app-primary
+      border-style solid
+      content ''
+      display block
+      margin 0.75rem auto
+      width 80px
+
+  > h3
+    font-size 1em
+    font-weight normal
+    text-align center
+
+  p
+    color color-text-light
+    font-size 0.9em
+    margin 0 auto
+    max-width max-standard-width
+    text-align justify
+
+  // Align those features correctly
+  .feature
+    .wrapper
+      padding-left 0
+      padding-right 0

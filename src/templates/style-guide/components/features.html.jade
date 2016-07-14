@@ -1,0 +1,47 @@
+extend ../../style-guide.html
+
+block vars
+  - var bodyClass = 'style-guide features';
+
+block sub_content
+  header#header
+    h1 Features
+    p Features are flat content that contain an image, a heading, and some description text. They are typically used as a heading for a service page or as a full-width section on another page. Here are some examples of how features can be organized.
+
+  .example
+    section.feature.gfx-left.white
+      .wrapper
+        .gfx
+          img(src='/gfx/vectors/ecommerce-fulfillment.svg')
+        .description
+          h2.title
+            | Sample Feature<br><code>.gfx-left</code>
+          p This feature shows the graphic to the left and the title on the right. This is one of four ways a feature can be displayed. The position of the graphic and the title are determined by their order in the DOM as well as a class applied to the element.
+
+    section.feature.gfx-right.blue.lighten-5
+      .wrapper
+        .description
+          h2.title
+            i.fa.fa-github-alt
+            | Sample Feature<br><code>.gfx-right</code>
+          p Features can always have icons in their title by adding an <code>&#60;i&#62;</code> element inside the <code>.title</code> heading. Also, adding an <code>.odd</code> or <code>.even</code> class to a feature gives it an accent background which is useful for displaying multiple features in a row.
+        .gfx
+          img(src='/gfx/vectors/website-hosting-management.svg')
+
+    section.feature.gfx-top.white
+      .wrapper
+        .gfx
+          img(src='/gfx/vectors/software-development.svg')
+        .description
+          h2.title
+            | Sample Feature <code>.gfx-top</code>
+          p This feature shows the graphic above and the description below. This is one of four ways a feature can be displayed. With <code>.gfx-top</code> and <code>.gfx-bottom</code> the graphic is styled to be 50% the width of its parent and have auto margins left and right.
+
+    section.feature.gfx-bottom.blue.lighten-5
+      .wrapper
+        .description
+          h2.title
+            | Sample Feature <code>.gfx-bottom</code>
+          p This feature shows the graphic below and the description above. The children of feature elements should always be wrapped in a <code>.wrapper</code> element for spacing and alignment.
+        .gfx
+          img(src='/gfx/vectors/international-exports.svg')

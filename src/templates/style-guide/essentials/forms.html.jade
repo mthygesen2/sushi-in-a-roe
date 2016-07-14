@@ -1,0 +1,100 @@
+extend ../../style-guide.html
+
+block vars
+  - var bodyClass = 'style-guide forms';
+
+block sub_content
+  header#header
+    h1 Forms
+    p This page depicts all the form variants for use in this website.
+
+  section.card
+    .card-content
+      h2.card-title= 'Form Layouts'
+      p Three tyes of form layouts are available:
+      ul
+        li Vertical form (default)
+        li Horizontal form
+        li Inline form
+      p Standard rules for all three form layouts:
+      ul
+        li Always use <code>&#60;form role="form"&#62;</code> (helps improve accessibility for people using screen readers)
+        li Wrap labels and form controls in <code>&#60;div class="form-group"&#62;</code> (needed for optimum spacing)
+        li Add class <code>&#60;form-control&#62;</code> to all textual <code>&#60;input&#62;</code>, <code>&#60;textarea&#62;</code>, and <code>&#60;select&#62;</code> elements so they have a width of 100%.
+
+  section.card
+    .card-content
+      h2.card-title Vertical Form (default)
+      .example
+        form(role='form')
+          .form-group
+            label(for='email') Email:
+            input#email.form-control(type='email', name='email', placeholder='name@email.com')
+
+          .form-group
+            label(for='password') Password:
+            input#password.form-control(type='password', name='password', placeholder='At least 6 characters')
+
+          .checkbox
+            label
+              input(type='checkbox')
+              span Remember me
+
+          button.btn.default(type='submit') Submit
+
+  section.card
+    .card-content
+      h2.card-title Inline Form
+      .example
+        form.form-inline(role='form')
+          .form-group
+            label(for='inline-email') Email:
+            input#inline-email.form-control(type='email', name='email', placeholder='name@email.com')
+
+          .form-group
+            label(for='inline-password') Password:
+            input#inline-password.form-control(type='password', name='password', placeholder='At least 6 characters')
+
+          .checkbox
+            label
+              input(type='checkbox')
+              span Remember me
+
+          button.btn.default(type='submit') Submit
+
+      p In an inline form, all of the elements are inline, left-aligned, and the labels are alongside.
+      p: strong Note: This only applies to forms within viewports that are at least 600px wide!
+      p Additional rule for an inline form:
+      ul
+        li Add class <code>.form-inline</code> to the <code>&#60;form&#62;</code> element.
+
+  section.card
+    .card-content
+      h2.card-title Horizontal Form
+      .example
+        form.form-horizontal(role='form')
+          .form-group
+            label.control-label(for='horizontal-email') Email:
+            .input
+              input#horizontal-email.form-control(type='email', name='email', placeholder='name@email.com')
+
+          .form-group
+            label.control-label(for='horizontal-password') Password:
+            .input
+              input#horizontal-password.form-control(type='password', name='password', placeholder='At least 6 characters')
+
+          .input-pull-right
+            .checkbox
+              label
+                input(type='checkbox')
+                span Remember me
+
+            button.btn.default(type='submit') Submit
+
+      p A horizontal form stands apart from the other forms both in the amount of markup, and in the presentation of the form.
+      p Additional rules for a horizontal form:
+      ul
+        li Add class <code>.form-horizontal</code> to the <code>&#60;form&#62;</code> element.
+        li Add class <code>.control-label</code> to all <code>&#60;label&#62;</code> elements.
+        li Wrap all <code>&#60;input&#62;</code> elements with a div with the class of <code>.input</code>
+        li Align anything to the input elements by wrapping it with the <code>.input-pull-right</code> class.
